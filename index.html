@@ -111,14 +111,6 @@ nav.solid{background:rgba(255,255,255,.97);box-shadow:0 2px 14px rgba(0,0,0,.06)
 .dbars{display:flex;align-items:flex-end;gap:2px;height:42px}
 .dbar{flex:1;border-radius:3px 3px 0 0}
 
-/* LOGOS */
-.lstrip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px clamp(1.5rem,5vw,3rem);background:#fff}
-.lsi{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.4rem}
-.lslbl{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);white-space:nowrap}
-.lstechs{display:flex;align-items:center;gap:1.7rem;flex-wrap:wrap}
-.lstech{display:flex;align-items:center;gap:.38rem;font-size:.78rem;font-weight:600;color:var(--muted);transition:color .2s;cursor:default}
-.lstech:hover{color:var(--blue)}
-.lsdot{width:7px;height:7px;border-radius:50%}
 
 /* 72H TIMELINE */
 .t72{padding:100px 0;background:var(--surf)}
@@ -379,8 +371,12 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 
 
 /* V5 ADDITIONS */
+.eprev{position:relative}
 .dores-grid-check{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:860px;margin:3rem auto 2.5rem}
 @media(max-width:600px){.dores-grid-check{grid-template-columns:1fr}}
+/* Demo overlay */
+@keyframes spin{to{transform:rotate(360deg)}}
+
 /* RESPONSIVE */
 @media(max-width:960px){
   .hero-in,.hist-in,.t72-inner,.naos-in{grid-template-columns:1fr}
@@ -398,14 +394,38 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
   .fgrid{grid-template-columns:1fr}
 }
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init("gjpHaw0v8Ew1YOAMr");</script>
 </head>
 <body>
 <!-- NAV -->
 <nav id="nav">
   <div class="navw">
-    <a class="nlogo" href="#">
-      <div class="nlogo-box"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM17 14a3 3 0 100 6 3 3 0 000-6z"/></svg></div>
-      <div><span class="nlogo-name">NexLow</span><span class="nlogo-tag">Automatize. Simplifique. Cresça.</span></div>
+    <a class="nlogo" href="#" style="display:flex;align-items:center;gap:0;text-decoration:none">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height:38px;width:auto;display:block;flex-shrink:0">
+        <defs>
+          <linearGradient id="navIG" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0D3FA0"/>
+            <stop offset="100%" stop-color="#1E6EFF"/>
+          </linearGradient>
+          <linearGradient id="navCG" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0EA5E9"/>
+            <stop offset="100%" stop-color="#38BDF8"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="120" height="120" rx="22" ry="22" fill="url(#navIG)"/>
+        <rect x="18" y="26" width="10" height="56" rx="2" fill="white"/>
+        <rect x="54" y="26" width="10" height="56" rx="2" fill="white"/>
+        <polygon points="18,26 28,26 64,82 54,82" fill="white"/>
+        <rect x="72" y="30" width="1.5" height="48" rx="0.75" fill="rgba(255,255,255,0.25)"/>
+        <rect x="80" y="26" width="10" height="56" rx="2" fill="white"/>
+        <rect x="80" y="72" width="24" height="10" rx="2" fill="url(#navCG)"/>
+        <circle cx="100" cy="100" r="4.5" fill="#38BDF8"/>
+      </svg>
+      <div style="margin-left:.55rem">
+        <span class="nlogo-name">Nexlow</span>
+        <span class="nlogo-tag">Automatize. Simplifique. Cresça.</span>
+      </div>
     </a>
     <ul class="nlinks">
       <li><a href="#dores">Soluções</a></li>
@@ -414,7 +434,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
       <li><a href="#metodo">Método</a></li>
       <li><a href="#casos">Cases</a></li>
     </ul>
-    <a href="#diagnostico" class="btn btnb" style="padding:.62rem 1.35rem;font-size:.82rem;">Diagnóstico Gratuito</a>
+    <a href="#diagnostico" class="btn btnb" style="padding:.62rem 1.35rem;font-size:.82rem;">Agendar Diagnóstico</a>
   </div>
 </nav>
 
@@ -424,9 +444,35 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
   <div class="orb o1"></div><div class="orb o2"></div>
   <div class="hero-in">
     <div class="r">
-      <div class="hpill"><div class="hpill-dot"></div>Do diagnóstico à solução — sem formato fixo</div>
-      <h1>Do diagnóstico ao resultado —<br><span class="gt">tecnologia construída<br>para o seu negócio.</span></h1>
-      <p class="hdesc">Toda empresa carrega gargalos que travam o crescimento. Diagnosticamos o problema, mapeamos a causa raiz e desenvolvemos a solução digital exata — ERP, aplicativo, automação ou IA. O formato segue o problema.</p>
+      
+      <div style="margin-bottom:1.8rem">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" style="height:72px;width:auto;display:block">
+          <defs>
+            <linearGradient id="hIG" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0D3FA0"/>
+              <stop offset="100%" stop-color="#1E6EFF"/>
+            </linearGradient>
+            <linearGradient id="hCG" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0EA5E9"/>
+              <stop offset="100%" stop-color="#38BDF8"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(20,20)">
+            <rect x="0" y="0" width="120" height="120" rx="22" ry="22" fill="url(#hIG)"/>
+            <rect x="18" y="26" width="10" height="56" rx="2" fill="white"/>
+            <rect x="54" y="26" width="10" height="56" rx="2" fill="white"/>
+            <polygon points="18,26 28,26 64,82 54,82" fill="white"/>
+            <rect x="72" y="30" width="1.5" height="48" rx="0.75" fill="rgba(255,255,255,0.25)"/>
+            <rect x="80" y="26" width="10" height="56" rx="2" fill="white"/>
+            <rect x="80" y="72" width="24" height="10" rx="2" fill="url(#hCG)"/>
+            <circle cx="100" cy="100" r="4.5" fill="#38BDF8"/>
+          </g>
+          <text x="164" y="92" font-family="'DM Sans','Outfit','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="46" letter-spacing="-1.5" fill="#0A0F1E">Nexlow</text>
+          <text x="165" y="118" font-family="'DM Sans','Outfit','Helvetica Neue',Arial,sans-serif" font-weight="400" font-size="13.5" letter-spacing="2.8" fill="#1557D4" opacity="0.85">AUTOMATIZE. SIMPLIFIQUE. CRESÇA.</text>
+        </svg>
+      </div>
+      <h1>Transformamos gargalos operacionais<br>em <span class="gt">soluções digitais.</span></h1>
+      <p class="hdesc">Toda empresa carrega gargalos que travam o crescimento. Diagnosticamos o problema, mapeamos a causa raiz e desenvolvemos a solução adequada. Cada projeto nasce da realidade da sua operação.</p>
       <div class="hbtns">
         <a href="#diagnostico" class="btn btnb">Solicitar Diagnóstico Gratuito →</a>
         <a href="#projetos" class="btn btnw">Ver Projetos</a>
@@ -470,22 +516,6 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
   </div>
 </section>
 
-<!-- TIPOS DE SOLUÇÃO -->
-<div class="lstrip">
-  <div class="lsi">
-    <span class="lslbl">A solução certa para cada problema</span>
-    <div class="lstechs">
-      <div class="lstech"><div class="lsdot" style="background:#1557D4"></div>ERP Personalizado</div>
-      <div class="lstech"><div class="lsdot" style="background:#1E6EFF"></div>Aplicativo Mobile</div>
-      <div class="lstech"><div class="lsdot" style="background:#00AAFF"></div>Portal Web</div>
-      <div class="lstech"><div class="lsdot" style="background:#0D52C8"></div>Dashboard Executivo</div>
-      <div class="lstech"><div class="lsdot" style="background:#3B82F6"></div>Automação de Processos</div>
-      <div class="lstech"><div class="lsdot" style="background:#60A5FA"></div>Inteligência Artificial</div>
-      <div class="lstech"><div class="lsdot" style="background:#93C5FD"></div>Integrações</div>
-    </div>
-  </div>
-</div>
-
 <!-- 72H TIMELINE -->
 <section class="t72" id="como-funciona">
   <div class="wrap">
@@ -528,272 +558,299 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
   </div>
 </section>
 
-<!-- STATS -->
-<section class="stats">
-  <div class="wrap">
-    <div class="sgrid" id="sg">
-      <div class="scard r"><span class="snum" data-t="40"><span class="cn">0</span>%</span><span class="slbl">Mais produtividade operacional com automação</span></div>
-      <div class="scard r d1"><span class="snum" data-t="70"><span class="cn">0</span>%</span><span class="slbl">Redução de tarefas manuais e retrabalho</span></div>
-      <div class="scard r d2"><span class="snum" data-t="90"><span class="cn">0</span>%</span><span class="slbl">Menos erros em processos automatizados</span></div>
-      <div class="scard r d3"><span class="snum">6–18<span style="-webkit-text-fill-color:initial;background:none;font-size:1.4rem;letter-spacing:-.02em;color:inherit"> m</span></span><span class="slbl">ROI médio de transformação digital</span></div>
-    </div>
+<!-- CUSTO DO PROBLEMA -->
+<section style="padding:100px 0;background:var(--ink)">
+<div class="wrap">
+  <div class="tc r">
+    <span class="tag" style="color:var(--cyan)"><span class="tdot"></span>O custo invisível</span>
+    <h2 class="stit" style="color:#fff">Qual desses problemas<br>você reconhece no seu negócio?</h2>
   </div>
-</section>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem" class="r">
 
-<!-- QUANTO SUA EMPRESA PERDE -->
-<section class="perde" id="perdas">
-  <div class="wrap">
-    <div class="tc r"><span class="tag"><span class="tdot"></span>O custo do problema</span><h2 class="stit">Quanto sua empresa perde hoje?</h2><p class="ssub" style="color:rgba(255,255,255,.45);margin:0 auto">Cada hora sem sistema custa. Veja o que gargalos operacionais geram ao longo do tempo.</p></div>
-    <div class="perde-grid">
-      <div class="pcard r">
-        <div class="pcard-head"><div class="pcard-ico">🏭</div><div class="pcard-title">Produção parada</div></div>
-        <div class="pcalc">
-          <div class="pcalc-step"><div class="pcalc-arrow">→</div><div class="pcalc-text"><strong>1 hora perdida por dia</strong>sem rastreamento de paradas</div></div>
-          <div class="pcalc-step"><div class="pcalc-arrow">↓</div><div class="pcalc-text"><strong>22 horas por mês</strong>sem diagnóstico de causa raiz</div></div>
-          <div class="pcalc-step"><div class="pcalc-arrow">↓</div><div class="pcalc-text"><strong>264 horas por ano</strong>de capacidade produtiva perdida</div></div>
-        </div>
-        <div class="pcalc-loss"><div class="pcalc-loss-lbl">Custo estimado anual</div><div class="pcalc-loss-val">R$ 158.400</div></div>
-      </div>
-      <div class="pcard r d1">
-        <div class="pcard-head"><div class="pcard-ico">📋</div><div class="pcard-title">Processos manuais</div></div>
-        <div class="pcalc">
-          <div class="pcalc-step"><div class="pcalc-arrow">→</div><div class="pcalc-text"><strong>30 min/dia por colaborador</strong>em tarefas que poderiam ser automatizadas</div></div>
-          <div class="pcalc-step"><div class="pcalc-arrow">↓</div><div class="pcalc-text"><strong>20 colaboradores</strong>= 220 horas desperdiçadas por mês</div></div>
-          <div class="pcalc-step"><div class="pcalc-arrow">↓</div><div class="pcalc-text"><strong>2.640 horas por ano</strong>de trabalho humano em tarefas robóticas</div></div>
-        </div>
-        <div class="pcalc-loss"><div class="pcalc-loss-lbl">Custo estimado anual</div><div class="pcalc-loss-val">R$ 105.600</div></div>
-      </div>
-      <div class="pcard r d2">
-        <div class="pcard-head"><div class="pcard-ico">📊</div><div class="pcard-title">Decisões sem dados</div></div>
-        <div class="pcalc">
-          <div class="pcalc-step"><div class="pcalc-arrow">→</div><div class="pcalc-text"><strong>Sem relatórios em tempo real</strong>decisões baseadas em achismo</div></div>
-          <div class="pcalc-step"><div class="pcalc-arrow">↓</div><div class="pcalc-text"><strong>Compras erradas, estoques inflados</strong>e oportunidades perdidas</div></div>
-          <div class="pcalc-step"><div class="pcalc-arrow">↓</div><div class="pcalc-text"><strong>Margem comprometida</strong>em cada ciclo operacional</div></div>
-        </div>
-        <div class="pcalc-loss"><div class="pcalc-loss-lbl">Impacto estimado na margem</div><div class="pcalc-loss-val">3% a 8% ao mês</div></div>
-      </div>
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem;transition:all .3s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+      <div style="font-size:2rem;margin-bottom:1rem">🔄</div>
+      <div style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem">Retrabalho</div>
+      <div style="font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.7">Horas perdidas em atividades repetitivas que poderiam ser automatizadas.</div>
     </div>
-    <div class="perde-cta r">
-      <p>É exatamente esse tipo de gargalo que diagnosticamos e eliminamos.<br>Do problema à solução — <strong>desenvolvida para a sua realidade.</strong></p>
-      <a href="#diagnostico" class="btn" style="background:#fff;color:var(--blue);font-size:.95rem;padding:.9rem 2.2rem;box-shadow:0 4px 20px rgba(0,0,0,.2)">Quero diagnosticar meu gargalo →</a>
+
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem;transition:all .3s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+      <div style="font-size:2rem;margin-bottom:1rem">📊</div>
+      <div style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem">Falta de Informação</div>
+      <div style="font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.7">Decisões tomadas sem dados confiáveis, baseadas em suposições ou planilhas desatualizadas.</div>
+    </div>
+
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem;transition:all .3s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+      <div style="font-size:2rem;margin-bottom:1rem">🔗</div>
+      <div style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem">Processos Desconectados</div>
+      <div style="font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.7">Planilhas, sistemas e informações espalhadas que ninguém consegue unificar.</div>
+    </div>
+
+  </div>
+  <div class="r" style="text-align:center;margin-top:2.5rem">
+    <p style="font-size:1rem;color:rgba(255,255,255,.5);font-style:italic">Esses problemas custam mais do que a maioria das empresas imagina.</p>
+    <div style="margin-top:1.5rem">
+      <a href="#diagnostico" class="btn btnb" style="text-decoration:none">Agendar Diagnóstico Gratuito →</a>
     </div>
   </div>
+</div>
 </section>
 
 <!-- MANIFESTO -->
-<section class="manifesto">
-  <div class="wrap">
-    <div class="manifesto-inner r">
-      <h2>O Manifesto NexLow</h2>
-      <div class="manifesto-lines">
-        <div class="mline">Toda empresa carrega gargalos. <strong>Nosso trabalho é eliminá-los através da tecnologia.</strong></div>
-        <div class="mline">Não chegamos com a solução pronta. <strong>Chegamos para entender o problema — e então construir a solução exata.</strong></div>
-        <div class="mline">Não criamos software por criar.</div>
-        <div class="mline">Criamos soluções para <strong>eliminar gargalos, reduzir desperdícios e impulsionar resultados.</strong></div>
-        <div class="mline">Porque toda empresa merece <strong>ferramentas construídas para a sua realidade.</strong></div>
-      </div>
-      <div class="manifesto-pill">Automatize. Simplifique. Cresça. →</div>
+<section style="padding:100px 0;background:linear-gradient(135deg,#0D1B3E 0%,#0A0F1E 100%);position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 30% 50%,rgba(21,87,212,.15),transparent);pointer-events:none"></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="r" style="max-width:720px;margin:0 auto;text-align:center">
+      <span class="tag" style="color:var(--cyan);justify-content:center"><span class="tdot"></span>Manifesto NexLow</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.035em;margin-bottom:2rem">Não acreditamos<br>em soluções prontas.</h2>
+      <p style="font-size:1.05rem;color:rgba(255,255,255,.6);line-height:1.85;max-width:580px;margin:0 auto 1.2rem">Acreditamos em entender pessoas, processos e objetivos antes de desenvolver qualquer tecnologia.</p>
+      <p style="font-size:1.05rem;color:rgba(255,255,255,.6);line-height:1.85;max-width:580px;margin:0 auto">Por isso cada projeto nasce de um diagnóstico real — e não de uma proposta genérica.</p>
     </div>
   </div>
 </section>
 
-<!-- HISTÓRIA COMPACTA -->
-<section class="hist" id="historia">
-  <div class="wrap">
-    <div class="hist-in">
-      <div class="r">
-        <span class="tag"><span class="tdot"></span>Quem somos</span>
-        <h2 class="stit">Experiência real.<br>Resultados reais.</h2>
-        <div class="hist-text">
-          <p><strong>Renan Gomes</strong>, fundador da NexLow, construiu sua carreira dentro de grandes empresas nacionais e multinacionais dos setores <strong>financeiro, industrial e automotivo</strong>.</p>
-          <p>Enquanto trabalhava, desenvolveu soluções internas que foram utilizadas por equipes no <strong>Brasil, Suécia, França e Argentina</strong>.</p>
-          <p>Foi dessa experiência prática — e do incômodo com ferramentas genéricas que forçavam empresas a adaptar seus processos à tecnologia — que nasceu a NexLow: uma consultoria tecnológica que parte do problema, não do produto.</p>
+<!-- HISTÓRIA -->
+<section id="historia" style="padding:100px 0;background:#fff">
+<div class="wrap">
+  <div style="display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:center;max-width:1100px;margin:0 auto">
+    <div class="r">
+      <span class="tag"><span class="tdot"></span>Quem somos</span>
+      <h2 class="stit">Experiência real.<br>Resultados reais.</h2>
+      <p style="font-size:1rem;color:var(--ink2);line-height:1.9;margin-bottom:1rem"><strong>Renan Gomes</strong>, fundador da NexLow, construiu sua carreira dentro de grandes empresas nacionais e multinacionais dos setores <strong>financeiro, industrial e automotivo</strong>.</p>
+      <p style="font-size:1rem;color:var(--ink2);line-height:1.9;margin-bottom:1rem">Desenvolveu soluções aplicadas por equipes no <strong>Brasil, Suécia, França e Argentina</strong>.</p>
+      <p style="font-size:1rem;color:var(--ink2);line-height:1.9;margin-bottom:1.5rem">Foi do incômodo com ferramentas genéricas — que forçavam empresas a adaptar seus processos à tecnologia — que nasceu a NexLow: uma consultoria tecnológica que parte do problema, não do produto.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div style="background:var(--surf2);border:1px solid rgba(21,87,212,.12);border-radius:12px;padding:1.1rem">
+          <div style="font-size:1.6rem;font-weight:900;color:var(--blue);letter-spacing:-.03em;line-height:1">4</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:.3rem;line-height:1.4">Países onde soluções foram aplicadas</div>
         </div>
-        <div class="hist-nums">
-          <div class="hnum-card"><div class="hnum-val">4</div><div class="hnum-lbl">Países onde soluções foram aplicadas</div></div>
-          <div class="hnum-card"><div class="hnum-val">5+</div><div class="hnum-lbl">Segmentos atendidos com soluções desenvolvidas</div></div>
-          <div class="hnum-card"><div class="hnum-val">72h</div><div class="hnum-lbl">Protótipo navegável da sua solução</div></div>
-          <div class="hnum-card"><div class="hnum-val">0</div><div class="hnum-lbl">Soluções genéricas — tudo sob medida</div></div>
-        </div>
-      </div>
-      <div class="r d1">
-        <div class="hist-tl">
-          <div class="htli"><div class="htls"><div class="htld"></div><div class="htlln"></div></div><div class="htlb"><div class="htltag">Origem</div><div class="htlname">Multinacionais e indústria</div><div class="htldesc">Atuação em grandes empresas, desenvolvendo visão sistêmica profunda sobre processos e operações.</div></div></div>
-          <div class="htli"><div class="htls"><div class="htld"></div><div class="htlln"></div></div><div class="htlb"><div class="htltag">Expansão</div><div class="htlname">Soluções com alcance internacional</div><div class="htldesc">Sistemas aplicados em times do Brasil, Suécia, França e Argentina — validando a metodologia globalmente.</div></div></div>
-          <div class="htli"><div class="htls"><div class="htld"></div><div class="htlln"></div></div><div class="htlb"><div class="htltag">Visão</div><div class="htlname">A causa raiz como metodologia</div><div class="htldesc">Em vez de tratar sintomas, a NexLow identifica e elimina a raiz dos gargalos antes de desenvolver qualquer linha de código.</div></div></div>
-          <div class="htli"><div class="htls"><div class="htld"></div></div><div class="htlb"><div class="htltag">Hoje</div><div class="htlname">Fundação da NexLow</div><div class="htldesc">Uma consultoria tecnológica criada para resolver problemas empresariais reais através de soluções digitais construídas sob medida.</div></div></div>
+        <div style="background:var(--surf2);border:1px solid rgba(21,87,212,.12);border-radius:12px;padding:1.1rem">
+          <div style="font-size:1.6rem;font-weight:900;color:var(--blue);letter-spacing:-.03em;line-height:1">72h</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:.3rem;line-height:1.4">Para você visualizar sua solução</div>
         </div>
       </div>
     </div>
+    <div class="r d1">
+      <div style="display:flex;flex-direction:column">
+        <div style="display:flex;gap:1.2rem"><div style="display:flex;flex-direction:column;align-items:center;min-width:28px"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:4px;box-shadow:0 0 0 3px rgba(21,87,212,.16)"></div><div style="width:1px;flex:1;background:var(--line);min-height:24px;margin:4px 0"></div></div><div style="padding-bottom:1.7rem"><div style="font-size:.62rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Origem</div><div style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Multinacionais e indústria</div><div style="font-size:.79rem;color:var(--muted);line-height:1.6">Atuação em grandes empresas, desenvolvendo visão sistêmica profunda sobre processos e operações.</div></div></div>
+        <div style="display:flex;gap:1.2rem"><div style="display:flex;flex-direction:column;align-items:center;min-width:28px"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:4px;box-shadow:0 0 0 3px rgba(21,87,212,.16)"></div><div style="width:1px;flex:1;background:var(--line);min-height:24px;margin:4px 0"></div></div><div style="padding-bottom:1.7rem"><div style="font-size:.62rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Expansão</div><div style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Alcance internacional</div><div style="font-size:.79rem;color:var(--muted);line-height:1.6">Sistemas aplicados em times no Brasil, Suécia, França e Argentina — metodologia validada globalmente.</div></div></div>
+        <div style="display:flex;gap:1.2rem"><div style="display:flex;flex-direction:column;align-items:center;min-width:28px"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:4px;box-shadow:0 0 0 3px rgba(21,87,212,.16)"></div></div><div style="padding-bottom:0"><div style="font-size:.62rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Hoje</div><div style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Fundação da NexLow</div><div style="font-size:.79rem;color:var(--muted);line-height:1.6">Consultoria tecnológica criada para resolver problemas reais através de soluções digitais sob medida.</div></div></div>
+      </div>
+    </div>
   </div>
+</div>
 </section>
 
 <!-- DIFERENCIAIS -->
-<section class="difs" id="diferenciais">
-  <div class="wrap">
-    <div class="tc r"><span class="tag"><span class="tdot"></span>O que nos diferencia</span><h2 class="stit">Feito para o seu negócio,<br>não para o mercado</h2><p class="ssub" style="margin:0 auto">Cada detalhe da nossa metodologia existe para garantir que a solução entregue resultados reais — não apenas funcione.</p></div>
-    <div class="difg">
-      <div class="difc r"><div class="dico">⚡</div><div class="ditt">Você vê a solução antes de investir</div><div class="didd">Em até 72 horas, entregamos um protótipo navegável baseado no diagnóstico. Você valida, ajusta e aprova — sem risco financeiro.</div></div>
-      <div class="difc r d1"><div class="dico">🧠</div><div class="ditt">IA onde ela gera resultado real</div><div class="didd">Integramos Claude, GPT-4 e Gemini nos pontos que geram impacto: previsão de demanda, automação e análise operacional.</div></div>
-      <div class="difc r d2"><div class="dico">🎯</div><div class="ditt">Cada funcionalidade desenhada para você</div><div class="didd">Nenhuma tela genérica. Cada fluxo e funcionalidade é desenvolvido para o seu processo, equipe e contexto específico.</div></div>
-      <div class="difc r"><div class="dico">🤝</div><div class="ditt">Você nunca fica sozinho</div><div class="didd">Treinamento, migração de dados e acompanhamento durante toda a transição. Suporte real, não apenas documentação.</div></div>
-      <div class="difc r d1"><div class="dico">📈</div><div class="ditt">Evolui com o negócio</div><div class="didd">Novos módulos, usuários e integrações sem precisar trocar tudo. A solução é arquitetada para crescer com a operação.</div></div>
-      <div class="difc r d2"><div class="dico">🔎</div><div class="ditt">Do problema à causa raiz</div><div class="didd">Nossa análise vai além do que foi pedido. Entendemos o problema real, a origem do gargalo, antes de propor qualquer solução técnica.</div></div>
-    </div>
+<section id="diferenciais" style="padding:100px 0;background:var(--surf)">
+<div class="wrap">
+  <div class="tc r">
+    <span class="tag"><span class="tdot"></span>Nossa metodologia</span>
+    <h2 class="stit">O que nos diferencia</h2>
+    <p class="ssub" style="margin:0 auto">Uma abordagem que parte do problema — não do produto.</p>
   </div>
-</section>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem">
 
-<!-- DORES EMPRESARIAIS -->
-<section class="sols" id="dores">
-  <div class="wrap">
-    <div class="tc r"><span class="tag"><span class="tdot"></span>Onde sua empresa se encaixa?</span><h2 class="stit">Qual é o seu gargalo?</h2><p class="ssub" style="margin:0 auto">Todo gargalo tem uma solução digital. Encontre abaixo o problema mais próximo da sua realidade — desenvolvemos a solução adequada, independente do setor ou formato.</p></div>
-
-    <!-- CARDS DE DORES -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:3rem 0 3.5rem" class="r">
-      <div class="difc" style="cursor:default"><div class="dico">📊</div><div class="ditt">Controle Operacional</div><div class="didd">Monitoramento em tempo real de produção, processos, estoque e indicadores. Visibilidade total da operação em um único painel.</div></div>
-      <div class="difc" style="cursor:default"><div class="dico">⚙️</div><div class="ditt">Automação de Processos</div><div class="didd">Eliminação de tarefas manuais e repetitivas. Fluxos automáticos que operam enquanto sua equipe foca no que realmente importa.</div></div>
-      <div class="difc" style="cursor:default"><div class="dico">💬</div><div class="ditt">Atendimento e Relacionamento</div><div class="didd">Gestão de clientes, agendamentos, campanhas e retenção. Ferramentas para aumentar recorrência e satisfação.</div></div>
-      <div class="difc" style="cursor:default"><div class="dico">💰</div><div class="ditt">Gestão Financeira</div><div class="didd">Controle de caixa, receitas, despesas e previsibilidade. Indicadores financeiros em tempo real para decisões mais seguras.</div></div>
-      <div class="difc" style="cursor:default"><div class="dico">📦</div><div class="ditt">Estoque e Produção</div><div class="didd">Rastreabilidade, controle de insumos, gestão de pedidos e logística. Eficiência operacional do início ao fim da cadeia.</div></div>
-      <div class="difc" style="cursor:default"><div class="dico">🧠</div><div class="ditt">Inteligência de Dados</div><div class="didd">Dashboards, relatórios automatizados e IA aplicada. Decisões mais rápidas e assertivas baseadas em dados reais da operação.</div></div>
+    <div class="difc r">
+      <div class="dico">🔍</div>
+      <div class="ditt">Diagnóstico antes de tudo</div>
+      <div class="didd">Entendemos sua operação, seus gargalos e a causa raiz dos problemas antes de propor qualquer solução técnica.</div>
+    </div>
+    <div class="difc r d1">
+      <div class="dico">⚡</div>
+      <div class="ditt">Protótipo em até 72 horas</div>
+      <div class="didd">Você visualiza a solução funcionando antes de investir. Valida, ajusta e aprova — sem risco financeiro.</div>
+    </div>
+    <div class="difc r d2">
+      <div class="dico">🤝</div>
+      <div class="ditt">Desenvolvimento colaborativo</div>
+      <div class="didd">Construção próxima, com entregas frequentes e validações contínuas. Você acompanha cada etapa.</div>
+    </div>
+    <div class="difc r">
+      <div class="dico">🚀</div>
+      <div class="ditt">Implantação assistida</div>
+      <div class="didd">Treinamento, migração e acompanhamento durante toda a transição. Primeiro mês de operação sem custo adicional.</div>
+    </div>
+    <div class="difc r d1">
+      <div class="dico">📈</div>
+      <div class="ditt">Evolui com o negócio</div>
+      <div class="didd">Novos módulos e integrações sem trocar tudo. A solução é arquitetada para crescer com a sua operação.</div>
+    </div>
+    <div class="difc r d2">
+      <div class="dico">🧠</div>
+      <div class="ditt">IA onde gera resultado</div>
+      <div class="didd">Integramos inteligência artificial onde ela tem impacto real — previsão, automação e análise operacional.</div>
     </div>
 
-    <div class="tc r" style="margin-bottom:2.5rem"><span class="tag"><span class="tdot"></span>Exemplos de soluções desenvolvidas</span><h2 class="stit" style="font-size:clamp(1.6rem,3vw,2.4rem)">Problema real → Solução desenvolvida</h2><p class="ssub" style="margin:0 auto">Cada exemplo abaixo nasceu de um gargalo específico. O formato — plataforma, automação, IA — foi definido depois do diagnóstico.</p></div>
-    <div class="stabs r">
-      <button class="stab act" onclick="showSol('nm',this)">Controle Industrial</button>
-      <button class="stab" onclick="showSol('nf',this)">Redução de Desperdício</button>
-      <button class="stab" onclick="showSol('bf',this)">Retenção de Clientes</button>
-      <button class="stab" onclick="showSol('gh',this)">Gestão Operacional</button>
-      <button class="stab" onclick="showSol('rz',this)">Gestão Multiunidade</button>
-    </div>
-    <div class="spanel act" id="sol-nm">
-      <div><div class="ssegs"><span class="sseg">Problema: produção sem visibilidade</span></div><h3 class="shl">Como recuperamos controle total de uma operação industrial em tempo real.</h3><div class="sftit">Funcionalidades</div><div class="sfts"><span class="sft">OEE — Eficiência global</span><span class="sft">MTTR / MTBF</span><span class="sft">Gestão de produção</span><span class="sft">Controle de qualidade</span><span class="sft">Gestão de manutenção</span><span class="sft">Engenharia e processos</span><span class="sft">Indicadores em tempo real</span><span class="sft">Apontamento de produção</span></div><div class="sftit">Benefícios</div><div class="sbens"><span class="sben">↓ Paradas reduzidas</span><span class="sben">↑ Produtividade</span><span class="sben">↓ Desperdícios</span><span class="sben">✓ Decisões em dados</span></div><button class="btn btnb" onclick="openModal('nm')" style="font-size:.86rem;padding:.76rem 1.55rem">▶ Ver Demonstração</button></div>
-      <div class="sprev"><div class="spbar"><div class="ddots"><div class="dd ddr"></div><div class="dd ddy"></div><div class="dd ddg"></div></div><span style="font-size:.56rem;color:rgba(255,255,255,.22);margin-left:.38rem">Solução: Plataforma de Controle Industrial</span></div><div class="spbody"><div class="spkrow"><div class="spk"><div class="spkv">91.4%</div><div class="spkl">OEE</div><div class="spkc">↑ +7.2%</div></div><div class="spk"><div class="spkv">0.4h</div><div class="spkl">MTTR</div><div class="spkc">↓ Reduzido</div></div><div class="spk"><div class="spkv">620h</div><div class="spkl">MTBF</div><div class="spkc">↑ +85h</div></div></div><div class="spch"><div class="spchl">Produção semanal por turno</div><div class="spbars" id="snmBars"></div></div><div class="spch"><div class="spchl">Status das máquinas</div><table class="sptbl"><tr><td>Prensa CNC #1</td><td style="color:#4ADE80">● Operando</td></tr><tr><td>Torno CNC #3</td><td style="color:#4ADE80">● Operando</td></tr><tr><td>Fresadora #2</td><td style="color:#FCD34D">● Setup</td></tr><tr><td>Solda Robotizada</td><td style="color:#4ADE80">● Operando</td></tr></table></div><div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:7px;padding:.5rem .8rem;font-size:.63rem;color:#F87171">⚠ Análise 5 Porquês pendente — Prensa #2</div></div></div>
-    </div>
-    <div class="spanel" id="sol-nf"><div><div class="ssegs"><span class="sseg">Problema: desperdício comprometendo margem</span></div><h3 class="shl">Como transformamos desperdício em economia mensurável com IA.</h3><div class="sftit">Funcionalidades</div><div class="sfts"><span class="sft">Controle de desperdício</span><span class="sft">Inteligência Artificial</span><span class="sft">Análise de causa raiz</span><span class="sft">Indicadores ESG</span><span class="sft">Controle de custos</span><span class="sft">Simulação de economia</span><span class="sft">Recomendação automática</span><span class="sft">Sustentabilidade</span></div><div class="sftit">Benefícios</div><div class="sbens"><span class="sben">↓ Menos desperdício</span><span class="sben">↓ Custos reduzidos</span><span class="sben">↑ Lucratividade</span><span class="sben">🌱 Sustentabilidade</span></div><div class="scallout">"Cada quilo de desperdício eliminado gera lucro direto para a operação."</div><button class="btn btnb" onclick="openModal('nf')" style="font-size:.86rem;padding:.76rem 1.55rem">▶ Ver Demonstração</button></div><div class="sprev"><div class="spbar"><div class="ddots"><div class="dd ddr"></div><div class="dd ddy"></div><div class="dd ddg"></div></div><span style="font-size:.56rem;color:rgba(255,255,255,.22);margin-left:.38rem">Solução: Plataforma de Gestão com IA</span></div><div class="spbody"><div class="spkrow"><div class="spk"><div class="spkv" style="color:#4ADE80">-34%</div><div class="spkl">Desperdício</div><div class="spkc">Meta: -40%</div></div><div class="spk"><div class="spkv">R$41k</div><div class="spkl">Economia/mês</div><div class="spkc">↑ Acumulado</div></div><div class="spk"><div class="spkv">IA</div><div class="spkl">Ativa</div><div class="spkc">96% precisão</div></div></div><div class="spch"><div class="spchl">Desperdício por categoria</div><div style="display:flex;flex-direction:column;gap:.3rem"><div style="display:flex;align-items:center;gap:.48rem;font-size:.6rem"><span style="color:rgba(255,255,255,.28);width:55px">Proteínas</span><div style="flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px"><div style="width:28%;height:100%;background:#EF4444;border-radius:3px"></div></div><span style="color:rgba(255,255,255,.46)">28%</span></div><div style="display:flex;align-items:center;gap:.48rem;font-size:.6rem"><span style="color:rgba(255,255,255,.28);width:55px">Vegetais</span><div style="flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px"><div style="width:45%;height:100%;background:#F97316;border-radius:3px"></div></div><span style="color:rgba(255,255,255,.46)">45%</span></div></div></div><div class="spch"><div class="spchl">🤖 Recomendações IA</div><div style="font-size:.62rem;color:rgba(255,255,255,.38);line-height:1.65"><div style="border-bottom:1px solid rgba(255,255,255,.05);padding:.2rem 0">→ Reduzir compra de proteínas em 20%</div><div style="padding:.2rem 0">→ Demanda: -15% quinta-feira</div></div></div></div></div></div>
-    <div class="spanel" id="sol-bf"><div><div class="ssegs"><span class="sseg">Problema: clientes que não voltam</span></div><h3 class="shl">Como automatizamos a retenção e transformamos clientes esporádicos em recorrentes.</h3><div class="sftit">Funcionalidades</div><div class="sfts"><span class="sft">Agenda inteligente</span><span class="sft">CRM completo</span><span class="sft">WhatsApp integrado</span><span class="sft">Campanhas automáticas</span><span class="sft">Programa de fidelidade</span><span class="sft">Indicadores financeiros</span><span class="sft">IA para retenção</span><span class="sft">Histórico de procedimentos</span></div><div class="sftit">Benefícios</div><div class="sbens"><span class="sben">↑ Mais agendamentos</span><span class="sben">↓ Menos faltas</span><span class="sben">↑ Recorrência</span><span class="sben">↑ Faturamento</span></div><button class="btn btnb" onclick="openModal('bf')" style="font-size:.86rem;padding:.76rem 1.55rem">▶ Ver Demonstração</button></div><div class="sprev"><div class="spbar"><div class="ddots"><div class="dd ddr"></div><div class="dd ddy"></div><div class="dd ddg"></div></div><span style="font-size:.56rem;color:rgba(255,255,255,.22);margin-left:.38rem">Solução: Plataforma de Gestão e CRM</span></div><div class="spbody"><div class="spkrow"><div class="spk"><div class="spkv">124</div><div class="spkl">Agendamentos</div><div class="spkc">↑ Este mês</div></div><div class="spk"><div class="spkv">R$22k</div><div class="spkl">Receita</div><div class="spkc">↑ +18%</div></div><div class="spk"><div class="spkv">87%</div><div class="spkl">Recorrência</div><div class="spkc">↑ Meta ok</div></div></div><div class="spch"><div class="spchl">Agenda de hoje</div><table class="sptbl"><tr><td>09:00 — Botox facial</td><td style="color:#4ADE80">Confirmado</td></tr><tr><td>10:30 — Limpeza de pele</td><td style="color:#4ADE80">Confirmado</td></tr><tr><td>13:00 — Harmonização</td><td style="color:#FCD34D">Aguardando</td></tr><tr><td>15:30 — Microagulhamento</td><td style="color:#4ADE80">Confirmado</td></tr></table></div><div style="background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);border-radius:7px;padding:.5rem .8rem;font-size:.62rem;color:#C084FC">🤖 IA detectou 12 clientes sem retorno há 45+ dias.</div></div></div></div>
-    <div class="spanel" id="sol-gh"><div><div class="ssegs"><span class="sseg">Problema: atrasos e falta de controle operacional</span></div><h3 class="shl">Como eliminamos atrasos e demos visibilidade total do orçamento à entrega.</h3><div class="sftit">Funcionalidades</div><div class="sfts"><span class="sft">Gestão comercial</span><span class="sft">Controle de produção</span><span class="sft">Gestão financeira</span><span class="sft">Controle de estoque</span><span class="sft">Logística de entregas</span><span class="sft">Indicadores de produção</span><span class="sft">Orçamentos detalhados</span><span class="sft">Rastreamento de pedidos</span></div><div class="sftit">Benefícios</div><div class="sbens"><span class="sben">↓ Menos atrasos</span><span class="sben">✓ Controle total</span><span class="sben">↑ Previsibilidade</span></div><button class="btn btnb" onclick="openModal('gh')" style="font-size:.86rem;padding:.76rem 1.55rem">▶ Ver Demonstração</button></div><div class="sprev"><div class="spbar"><div class="ddots"><div class="dd ddr"></div><div class="dd ddy"></div><div class="dd ddg"></div></div><span style="font-size:.56rem;color:rgba(255,255,255,.22);margin-left:.38rem">Solução: Plataforma de Gestão Operacional</span></div><div class="spbody"><div class="spkrow"><div class="spk"><div class="spkv">R$2.4M</div><div class="spkl">Faturamento</div><div class="spkc">↑ +22%</div></div><div class="spk"><div class="spkv">847</div><div class="spkl">Pedidos</div><div class="spkc">Ativos</div></div><div class="spk"><div class="spkv">98%</div><div class="spkl">No prazo</div><div class="spkc">↑ Entrega</div></div></div><div class="spch"><div class="spchl">Pipeline de produção</div><table class="sptbl"><tr><td>Cozinha #847</td><td style="color:#60A5FA">Em produção</td></tr><tr><td>Quarto Casal #842</td><td style="color:#4ADE80">Pronto p/ entrega</td></tr><tr><td>Home Office #851</td><td style="color:#FCD34D">Aguardando mat.</td></tr><tr><td>Sala Completa #838</td><td style="color:#4ADE80">Entregue ✓</td></tr></table></div></div></div></div>
-    <div class="spanel" id="sol-rz"><div><div class="ssegs"><span class="sseg">Problema: múltiplas unidades sem gestão centralizada</span></div><h3 class="shl">Como unificamos a gestão de 3 unidades em um único painel executivo.</h3><div class="sftit">Funcionalidades</div><div class="sfts"><span class="sft">PDV integrado</span><span class="sft">Controle de estoque</span><span class="sft">Gestão multiunidade</span><span class="sft">Controle de vendas</span><span class="sft">Gestão financeira</span><span class="sft">Dashboard executivo</span><span class="sft">Relatórios gerenciais</span><span class="sft">Indicadores por unidade</span></div><div class="sftit">Benefícios</div><div class="sbens"><span class="sben">✓ Controle total</span><span class="sben">↑ Crescimento estruturado</span><span class="sben">↑ Controle financeiro</span></div><button class="btn btnb" onclick="openModal('rz')" style="font-size:.86rem;padding:.76rem 1.55rem">▶ Ver Demonstração</button></div><div class="sprev"><div class="spbar"><div class="ddots"><div class="dd ddr"></div><div class="dd ddy"></div><div class="dd ddg"></div></div><span style="font-size:.56rem;color:rgba(255,255,255,.22);margin-left:.38rem">Solução: Plataforma de Gestão Multiunidade</span></div><div class="spbody"><div class="spkrow"><div class="spk"><div class="spkv">3</div><div class="spkl">Unidades</div><div class="spkc">Ativas</div></div><div class="spk"><div class="spkv">R$89k</div><div class="spkl">Vendas/mês</div><div class="spkc">↑ +31%</div></div><div class="spk"><div class="spkv">4.8k</div><div class="spkl">Transações</div><div class="spkc">Este mês</div></div></div><div class="spch"><div class="spchl">Desempenho por unidade</div><div style="display:flex;flex-direction:column;gap:.3rem"><div style="display:flex;align-items:center;gap:.48rem;font-size:.6rem"><span style="color:rgba(255,255,255,.28);width:48px">Unidade 1</span><div style="flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px"><div style="width:92%;height:100%;background:linear-gradient(90deg,#1557D4,#00AAFF);border-radius:3px"></div></div><span style="color:rgba(255,255,255,.46)">R$41k</span></div><div style="display:flex;align-items:center;gap:.48rem;font-size:.6rem"><span style="color:rgba(255,255,255,.28);width:48px">Unidade 2</span><div style="flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px"><div style="width:70%;height:100%;background:linear-gradient(90deg,#1557D4,#00AAFF);border-radius:3px"></div></div><span style="color:rgba(255,255,255,.46)">R$31k</span></div></div></div></div></div></div>
-  </div>
-</section>
-
-<!-- MODAL -->
-<div class="mover" id="modal" onclick="closeModalOut(event)">
-  <div class="mbox">
-    <div class="mhd"><div class="mtit" id="mtit">Demonstração</div><button class="mcls" onclick="closeModal()">✕</button></div>
-    <div class="mbod"><p style="color:var(--muted);font-size:.84rem;margin-bottom:1.3rem;line-height:1.7">Prévia das telas do sistema. Cada módulo é desenvolvido sob medida para a realidade operacional do cliente.</p><div class="mscrs" id="mscrs"></div><div style="margin-top:1.3rem;text-align:center"><a href="#diagnostico" class="btn btnb" onclick="closeModal()" style="text-decoration:none">→ Solicitar Diagnóstico Gratuito</a></div></div>
   </div>
 </div>
-<!-- ECOSSISTEMA -->
-<section class="eco" id="projetos">
-  <div class="wrap">
-    <div class="tc r"><span class="tag"><span class="tdot"></span>Do problema à solução</span><h2 class="stit">Projetos desenvolvidos<br>para resolver gargalos reais.</h2><p class="ssub" style="margin:0 auto">Cada projeto abaixo começou com um problema específico. O formato da solução foi consequência do diagnóstico — não o ponto de partida.</p></div>
-    <div class="eco-grid">
-      <div class="ecard r"><div class="eprev" style="background:linear-gradient(135deg,#0B1120,#162240)"><div class="mini-d"><div class="mkpis"><div class="mk"><div class="mkv">91%</div><div class="mkl">OEE</div></div><div class="mk"><div class="mkv">0.4h</div><div class="mkl">MTTR</div></div><div class="mk"><div class="mkv">620h</div><div class="mkl">MTBF</div></div></div><div class="mbrs"><div class="mbr"><span style="width:44px">Produção</span><div class="mbt"><div class="mbf" style="width:91%;background:linear-gradient(90deg,#1557D4,#00AAFF)"></div></div></div><div class="mbr"><span style="width:44px">Qualidade</span><div class="mbt"><div class="mbf" style="width:99%;background:linear-gradient(90deg,#10B981,#1557D4)"></div></div></div></div></div></div><div class="ebody"><div class="eclient">Setor: Industrial · Automotivo</div><div class="ename">Controle Industrial</div><div class="eseg">⚙️ Plataforma Web · Dashboard · Automação</div><div class="edesc">Problema: produção sem visibilidade e manutenção reativa. Solução: plataforma de monitoramento em tempo real com OEE, MTTR, qualidade e apontamentos automatizados.</div><div class="eroi">ROI estimado em 8–14 meses</div></div></div>
-
-      <div class="ecard r d1"><div class="eprev" style="background:linear-gradient(135deg,#0B1120,#1A0D30)"><div class="mini-d"><div class="mkpis"><div class="mk"><div class="mkv" style="color:#C084FC">-34%</div><div class="mkl">Desperdício</div></div><div class="mk"><div class="mkv">R$41k</div><div class="mkl">Economia</div></div><div class="mk"><div class="mkv">IA</div><div class="mkl">Ativa</div></div></div><div class="mbrs"><div class="mbr"><span style="width:44px">Previsão</span><div class="mbt"><div class="mbf" style="width:96%;background:linear-gradient(90deg,#8B5CF6,#00AAFF)"></div></div></div><div class="mbr"><span style="width:44px">Custo</span><div class="mbt"><div class="mbf" style="width:34%;background:#EF4444"></div></div></div></div></div></div><div class="ebody"><div class="eclient">Setor: Alimentício · Gestão</div><div class="ename">Redução de Desperdício com IA</div><div class="eseg">🤖 Plataforma Web · IA · Automação de Dados</div><div class="edesc">Problema: desperdício alimentar comprometendo margem. Solução: plataforma com IA integrada para previsão de demanda, recomendações automáticas e simulação de economia.</div><div class="eroi">ROI estimado em 6–10 meses</div></div></div>
-
-      <div class="ecard r d2"><div class="eprev" style="background:linear-gradient(135deg,#0B1120,#1A0A22)"><div class="mini-d"><div class="mkpis"><div class="mk"><div class="mkv">124</div><div class="mkl">Agendamentos</div></div><div class="mk"><div class="mkv">R$22k</div><div class="mkl">Receita</div></div><div class="mk"><div class="mkv">87%</div><div class="mkl">Recorrência</div></div></div><div class="mbrs"><div class="mbr"><span style="width:44px">CRM</span><div class="mbt"><div class="mbf" style="width:87%;background:linear-gradient(90deg,#EC4899,#8B5CF6)"></div></div></div><div class="mbr"><span style="width:44px">Agenda</span><div class="mbt"><div class="mbf" style="width:94%;background:linear-gradient(90deg,#8B5CF6,#1557D4)"></div></div></div></div></div></div><div class="ebody"><div class="eclient">Setor: Serviços · Beleza</div><div class="ename">Retenção e Relacionamento</div><div class="eseg">📱 Plataforma Web · CRM · Automação WhatsApp</div><div class="edesc">Problema: alta rotatividade de clientes e faltas frequentes. Solução: plataforma de agenda inteligente, CRM integrado e automação de campanhas de retenção via WhatsApp.</div><div class="eroi">ROI estimado em 5–8 meses</div></div></div>
-
-      <div class="ecard r"><div class="eprev" style="background:linear-gradient(135deg,#0B1120,#0A180F)"><div class="mini-d"><div class="mkpis"><div class="mk"><div class="mkv">R$2.4M</div><div class="mkl">Faturamento</div></div><div class="mk"><div class="mkv">847</div><div class="mkl">Pedidos</div></div><div class="mk"><div class="mkv">98%</div><div class="mkl">No prazo</div></div></div><div class="mbrs"><div class="mbr"><span style="width:44px">Produção</span><div class="mbt"><div class="mbf" style="width:82%;background:linear-gradient(90deg,#10B981,#1557D4)"></div></div></div><div class="mbr"><span style="width:44px">Vendas</span><div class="mbt"><div class="mbf" style="width:90%;background:linear-gradient(90deg,#1557D4,#10B981)"></div></div></div></div></div></div><div class="ebody"><div class="eclient">Setor: Moveleiro · Produção</div><div class="ename">Gestão Operacional Integrada</div><div class="eseg">🖥️ Plataforma Web · ERP · Gestão de Projetos</div><div class="edesc">Problema: atrasos de entrega e falta de visibilidade do pipeline. Solução: plataforma integrada de gestão do orçamento à entrega, com produção, estoque, vendas e financeiro unificados.</div><div class="eroi">ROI estimado em 10–18 meses</div></div></div>
-
-      <div class="ecard r d1"><div class="eprev" style="background:linear-gradient(135deg,#0B1120,#1A1408)"><div class="mini-d"><div class="mkpis"><div class="mk"><div class="mkv">3</div><div class="mkl">Unidades</div></div><div class="mk"><div class="mkv">R$89k</div><div class="mkl">Vendas/mês</div></div><div class="mk"><div class="mkv">+31%</div><div class="mkl">Crescimento</div></div></div><div class="mbrs"><div class="mbr"><span style="width:44px">Und. 1</span><div class="mbt"><div class="mbf" style="width:92%;background:linear-gradient(90deg,#1557D4,#00AAFF)"></div></div></div><div class="mbr"><span style="width:44px">Und. 2</span><div class="mbt"><div class="mbf" style="width:70%;background:linear-gradient(90deg,#1557D4,#00AAFF)"></div></div></div></div></div></div><div class="ebody"><div class="eclient">Setor: Varejo · Multiunidade</div><div class="ename">Gestão Multiunidade Centralizada</div><div class="eseg">📊 Dashboard · PDV · Controle Financeiro</div><div class="edesc">Problema: 3 unidades sem visibilidade unificada. Solução: painel executivo centralizado com PDV, estoque, financeiro e indicadores de performance por unidade em tempo real.</div><div class="eroi">ROI estimado em 8–12 meses</div></div></div>
-
-      <div class="ecard r d2" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#fff;border:1.5px dashed rgba(21,87,212,.26)"><div style="font-size:2rem;color:var(--blue);margin-bottom:.75rem">+</div><div class="ename" style="margin-bottom:.4rem">Qual é o seu problema?</div><div class="edesc" style="margin-bottom:1.2rem">O formato da solução é consequência. ERP, aplicativo, automação, IA — definimos juntos o que faz mais sentido.</div><a href="#diagnostico" class="btn btnb" style="font-size:.78rem;padding:.62rem 1.3rem;text-decoration:none">Solicitar Diagnóstico</a></div>
-    </div>
-  </div>
 </section>
 
-<!-- QUANDO UMA SOLUÇÃO PERSONALIZADA FAZ SENTIDO -->
-<section class="cmp" id="comparativo">
-  <div class="wrap">
-    <div class="tc r"><span class="tag"><span class="tdot"></span>Quando faz sentido</span><h2 class="stit">Quando uma solução personalizada<br>é a escolha certa?</h2><p class="ssub" style="margin:0 auto">A melhor solução nem sempre é substituir tudo. Muitas vezes é complementar e potencializar o que você já possui.</p></div>
+<!-- SOLUÇÕES EM AÇÃO -->
+<section id="projetos" style="padding:110px 0;background:#fff">
+<div class="wrap">
 
-    <!-- CHECKLIST GRID -->
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:860px;margin:3rem auto 2.5rem" class="r">
-      <div class="difc" style="display:flex;align-items:flex-start;gap:.9rem;padding:1.3rem">
-        <div style="width:28px;height:28px;border-radius:50%;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#059669;flex-shrink:0;margin-top:.1rem">✓</div>
-        <div><div style="font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Sua empresa tem processos únicos?</div><div style="font-size:.78rem;color:var(--muted);line-height:1.6">Quando nenhuma solução pronta cobre suas particularidades, uma aplicação personalizada é o caminho.</div></div>
-      </div>
-      <div class="difc" style="display:flex;align-items:flex-start;gap:.9rem;padding:1.3rem">
-        <div style="width:28px;height:28px;border-radius:50%;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#059669;flex-shrink:0;margin-top:.1rem">✓</div>
-        <div><div style="font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Seu negócio não se encaixa em soluções prontas?</div><div style="font-size:.78rem;color:var(--muted);line-height:1.6">Forçar processos únicos em ferramentas genéricas gera ineficiência, retrabalho e frustração da equipe.</div></div>
-      </div>
-      <div class="difc" style="display:flex;align-items:flex-start;gap:.9rem;padding:1.3rem">
-        <div style="width:28px;height:28px;border-radius:50%;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#059669;flex-shrink:0;margin-top:.1rem">✓</div>
-        <div><div style="font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Precisa integrar várias ferramentas?</div><div style="font-size:.78rem;color:var(--muted);line-height:1.6">Desenvolvemos integrações entre sistemas existentes — sem precisar substituir tudo do zero.</div></div>
-      </div>
-      <div class="difc" style="display:flex;align-items:flex-start;gap:.9rem;padding:1.3rem">
-        <div style="width:28px;height:28px;border-radius:50%;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#059669;flex-shrink:0;margin-top:.1rem">✓</div>
-        <div><div style="font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Precisa eliminar gargalos específicos?</div><div style="font-size:.78rem;color:var(--muted);line-height:1.6">Identificamos a causa raiz e desenvolvemos a solução exata para o problema — sem adicionar complexidade desnecessária.</div></div>
-      </div>
-      <div class="difc" style="display:flex;align-items:flex-start;gap:.9rem;padding:1.3rem">
-        <div style="width:28px;height:28px;border-radius:50%;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#059669;flex-shrink:0;margin-top:.1rem">✓</div>
-        <div><div style="font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Precisa automatizar tarefas repetitivas?</div><div style="font-size:.78rem;color:var(--muted);line-height:1.6">Liberamos sua equipe do trabalho manual com automações que operam 24h — sem depender de sistemas rígidos.</div></div>
-      </div>
-      <div class="difc" style="display:flex;align-items:flex-start;gap:.9rem;padding:1.3rem">
-        <div style="width:28px;height:28px;border-radius:50%;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#059669;flex-shrink:0;margin-top:.1rem">✓</div>
-        <div><div style="font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Já possui ERP mas ainda existem problemas?</div><div style="font-size:.78rem;color:var(--muted);line-height:1.6">Complementamos e potencializamos o que você já tem — sem descontinuar investimentos anteriores.</div></div>
-      </div>
-    </div>
-
-    <div class="perde-cta r" style="background:var(--surf2);border:1px solid rgba(21,87,212,.15)">
-      <p style="color:var(--ink)">Você nos conta o problema. Nós fazemos o diagnóstico, identificamos a causa raiz<br>e desenvolvemos a solução digital mais adequada — <strong>sem formato fixo.</strong></p>
-      <a href="#diagnostico" class="btn btnb" style="font-size:.92rem;padding:.88rem 2rem;text-decoration:none">Diagnosticar meu problema →</a>
-    </div>
+  <!-- Header -->
+  <div class="tc r">
+    <span class="tag"><span class="tdot"></span>Soluções em Ação</span>
+    <h2 class="stit">Problemas reais.<br>Soluções que você pode navegar.</h2>
+    <p class="ssub" style="margin:0 auto">Cada projeto abaixo nasceu de um gargalo específico. Explore os sistemas reais — navegue pelas telas, veja os módulos, sinta como seria ter uma solução desenvolvida para o seu negócio.</p>
   </div>
+
+  <!-- Dores grid — 6 tipos -->
+  <div class="tc r" style="margin-bottom:2.5rem">
+    <span class="tag"><span class="tdot"></span>Exemplos desenvolvidos</span>
+    <h2 class="stit" style="font-size:clamp(1.6rem,3vw,2.4rem)">Explore os projetos</h2>
+    <p class="ssub" style="margin:0 auto">Clique em qualquer projeto para navegar pelo sistema real. Dois deles estão disponíveis como demonstração interativa completa.</p>
+  </div>
+
+  <!-- Project cards -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-bottom:1.5rem" class="r">
+
+    <!-- ENGEMET -->
+    <div class="ecard">
+      <div class="eprev" style="background:linear-gradient(135deg,#07090F,#0D1828);cursor:default">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
+        </div>
+      </div>
+      <div class="ebody">
+        <div class="eclient">Problema resolvido</div>
+        <div class="ename">Controle operacional e produtividade industrial</div>
+        <div class="eseg">Plataforma web de monitoramento e gestão industrial</div>
+        <div class="edesc">Produção sem visibilidade, manutenção reativa e decisões baseadas em achismo. Desenvolvemos uma plataforma de monitoramento em tempo real com indicadores, apontamentos e análise de falhas.</div>
+        <div style="margin-top:.85rem"><div class="eroi">ROI estimado 8–14 meses</div></div>
+      </div>
+    </div>
+
+    <!-- GUILHEM -->
+    <div class="ecard">
+      <div class="eprev" style="background:linear-gradient(135deg,#0F0E0C,#1E1B17);cursor:default">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
+        </div>
+      </div>
+      <div class="ebody">
+        <div class="eclient">Problema resolvido</div>
+        <div class="ename">Gestão integrada do orçamento à entrega</div>
+        <div class="eseg">Plataforma web de gestão operacional e financeira</div>
+        <div class="edesc">Atrasos constantes e falta de visibilidade sobre pedidos, produção e entregas. Desenvolvemos uma plataforma unificada que integra comercial, produção, estoque e financeiro em um único painel.</div>
+        <div style="margin-top:.85rem"><div class="eroi">ROI estimado 10–18 meses</div></div>
+      </div>
+    </div>
+
+    <!-- NEXFOOD -->
+    <div class="ecard">
+      <div class="eprev" style="background:linear-gradient(135deg,#05080F,#0A1020);cursor:default">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
+        </div>
+      </div>
+      <div class="ebody">
+        <div class="eclient">Problema resolvido</div>
+        <div class="ename">Redução de desperdício e custos com inteligência artificial</div>
+        <div class="eseg">Plataforma web com IA integrada para gestão e previsão</div>
+        <div class="edesc">Desperdício operacional invisível comprometendo a margem. Desenvolvemos uma plataforma com IA para previsão de demanda, recomendações automáticas de ajuste e simulação de economia em tempo real.</div>
+        <div style="margin-top:.85rem"><div class="eroi">ROI estimado 6–10 meses</div></div>
+      </div>
+    </div>
+
+    <!-- BEAUTYFLOW -->
+    <div class="ecard">
+      <div class="eprev" style="background:linear-gradient(135deg,#07070d,#16161f);cursor:default">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
+        </div>
+      </div>
+      <div class="ebody">
+        <div class="eclient">Problema resolvido</div>
+        <div class="ename">Retenção de clientes e aumento de recorrência</div>
+        <div class="eseg">Plataforma web de CRM, agenda e automação de relacionamento</div>
+        <div class="edesc">Alta rotatividade de clientes e falta de previsibilidade no faturamento. Desenvolvemos uma plataforma com agenda inteligente, CRM integrado e automação de campanhas de reativação e fidelização.</div>
+        <div style="margin-top:.85rem"><div class="eroi">ROI estimado 5–8 meses</div></div>
+      </div>
+    </div>
+
+    <!-- REALEZA -->
+    <div class="ecard">
+      <div class="eprev" style="background:linear-gradient(135deg,#1a0d12,#2d1520);cursor:default">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(204,49,86,0.15);border:1px solid rgba(204,49,86,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
+        </div>
+      </div>
+      <div class="ebody">
+        <div class="eclient">Problema resolvido</div>
+        <div class="ename">Centralização e controle de múltiplas unidades</div>
+        <div class="eseg">Dashboard executivo com PDV, estoque e financeiro unificados</div>
+        <div class="edesc">Múltiplas unidades operando sem visibilidade centralizada, com gestão fragmentada de caixa, estoque e vendas. Desenvolvemos um painel executivo unificado com indicadores em tempo real por unidade.</div>
+        <div style="margin-top:.85rem"><div class="eroi">ROI estimado 8–12 meses</div></div>
+      </div>
+    </div>
+
+    <!-- +3 projetos -->
+    <div class="ecard" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#fff;border:1.5px dashed rgba(21,87,212,.26);cursor:default">
+      <div style="font-size:1.8rem;color:var(--blue);margin-bottom:.7rem;font-weight:900">+3</div>
+      <div class="ename" style="margin-bottom:.4rem">Projetos em avaliação</div>
+      <div class="edesc" style="margin-bottom:1.2rem">Soluções em desenvolvimento para novos clientes. A solução segue o diagnóstico — não o inverso.</div>
+      <a href="#diagnostico" class="btn btnb" style="font-size:.78rem;padding:.62rem 1.3rem;text-decoration:none">Quero o meu →</a>
+    </div>
+
+  </div>
+
+    <!-- Bottom CTA strip -->
+  <div class="r" style="text-align:center;padding:1.5rem;background:var(--surf2);border-radius:var(--rl);border:1px solid rgba(21,87,212,.12)">
+    <p style="font-size:.88rem;color:var(--ink2);margin-bottom:.6rem">Seu setor não está listado? <strong>O problema é o ponto de partida, não o segmento.</strong></p>
+    <a href="#diagnostico" class="btn btnb" style="font-size:.85rem;padding:.75rem 1.7rem;text-decoration:none">Diagnosticar meu gargalo →</a>
+  </div>
+
+</div>
 </section>
 
-<!-- CASOS DE TRANSFORMAÇÃO -->
-<section class="casos" id="casos">
-  <div class="wrap">
-    <div class="tc r"><span class="tag"><span class="tdot"></span>Casos de transformação</span><h2 class="stit">Problemas reais.<br>Soluções digitais reais.</h2><p class="ssub" style="margin:0 auto">Cada solução nasceu de uma dor operacional específica — e os resultados esperados refletem exatamente o que a solução digital foi projetada para gerar.</p></div>
-    <div class="casos-grid">
-      <div class="casocard r"><div class="caso-seg"><div class="caso-ico">⚙️</div><div class="caso-seg-name">Metalurgia · Automotivo</div></div><div class="caso-title">Paradas não planejadas consumindo produção</div><div class="caso-pain">Empresa sem rastreamento de paradas em tempo real. Manutenção reativa, sem histórico. Cada falha descoberta tarde demais.</div><div class="caso-results"><div class="caso-res down">Redução de MTTR em 60%</div><div class="caso-res">OEE de 72% para 91%</div><div class="caso-res">Manutenção preventiva automatizada</div></div></div>
-      <div class="casocard r d1"><div class="caso-seg"><div class="caso-ico">🍽️</div><div class="caso-seg-name">Alimentício · Refeitório</div></div><div class="caso-title">Desperdício comprometendo margem</div><div class="caso-pain">Sem controle de saída de insumos, reposição baseada em histórico achado, desperdício invisível na operação diária.</div><div class="caso-results"><div class="caso-res down">-34% de desperdício alimentar</div><div class="caso-res">R$41k de economia mensal</div><div class="caso-res">Previsão de demanda com 96% precisão</div></div></div>
-      <div class="casocard r d2"><div class="caso-seg"><div class="caso-ico">💄</div><div class="caso-seg-name">Estética · Beleza</div></div><div class="caso-title">Clientes que não voltam</div><div class="caso-pain">Agenda manual, sem CRM integrado. Sem alertas de retenção. Faturamento variável, sem previsibilidade.</div><div class="caso-results"><div class="caso-res">87% de taxa de recorrência</div><div class="caso-res">+18% de faturamento mensal</div><div class="caso-res down">-40% de faltas e cancelamentos</div></div></div>
-      <div class="casocard r"><div class="caso-seg"><div class="caso-ico">🪑</div><div class="caso-seg-name">Moveleiro · Planejados</div></div><div class="caso-title">Atrasos de entrega e falta de controle</div><div class="caso-pain">Pedidos em planilha, sem rastreamento de produção. Prazos perdidos, cliente insatisfeito, margem comprometida.</div><div class="caso-results"><div class="caso-res">98% de entregas no prazo</div><div class="caso-res down">-60% de retrabalho por erro de pedido</div><div class="caso-res">Visibilidade completa do pipeline</div></div></div>
-      <div class="casocard r d1"><div class="caso-seg"><div class="caso-ico">🏪</div><div class="caso-seg-name">Varejo · Multiunidade</div></div><div class="caso-title">Gestor cego sobre o desempenho das unidades</div><div class="caso-pain">3 unidades sem relatório unificado. Estoque por achismo, vendas sem análise cruzada, caixa descentralizado.</div><div class="caso-results"><div class="caso-res">+31% de crescimento mensal</div><div class="caso-res">Controle em tempo real das 3 unidades</div><div class="caso-res down">-50% de rupturas de estoque</div></div></div>
-      <div class="casocard r d2" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:var(--surf2);border-color:rgba(21,87,212,.16)"><div style="font-size:2rem;margin-bottom:.6rem">🎯</div><div class="caso-title" style="margin-bottom:.5rem">Qual é o seu problema?</div><div class="caso-pain" style="margin-bottom:1.2rem">O formato da solução segue o problema — ERP, aplicativo, automação, IA ou dashboard. Vamos entender o seu gargalo.</div><a href="#diagnostico" class="btn btnb" style="font-size:.8rem;padding:.65rem 1.35rem;text-decoration:none">Solicitar Diagnóstico</a></div>
-    </div>
-  </div>
-</section>
+</script>
 
 <!-- MÉTODO -->
-<section class="met" id="metodo">
-  <div class="wrap">
-    <div class="tc r"><span class="tag"><span class="tdot"></span>Nosso processo</span><h2 class="stit">Metodologia NexFlow™</h2><p class="ssub" style="margin:0 auto">Um processo testado que transforma a complexidade do seu negócio em uma solução digital precisa, eficiente e sustentável.</p></div>
-    <div class="met-inner">
-      <div class="step r"><div class="stepn">01</div><div class="stepb"><div class="stepti">Diagnóstico Estratégico</div><div class="stepd">Entendemos seu negócio, processos, equipe e desafios. Identificamos a verdadeira causa raiz dos problemas operacionais.</div></div></div>
-      <div class="step r"><div class="stepn">02</div><div class="stepb"><div class="stepti">Blueprint Digital</div><div class="stepd">Mapeamos oportunidades e gargalos. Desenhamos a arquitetura da solução antes de escrever uma linha de código.</div></div></div>
-      <div class="step r"><div class="stepn">03</div><div class="stepb"><div class="stepti">Protótipo em até 72 horas</div><div class="stepd">Você visualiza a solução funcionando com dados da sua operação. Navega, valida e aprova antes de qualquer investimento.</div></div></div>
-      <div class="step r"><div class="stepn">04</div><div class="stepb"><div class="stepti">Desenvolvimento Orientado a Resultado</div><div class="stepd">Construção modular com entregas frequentes. Você acompanha e valida cada etapa do desenvolvimento.</div></div></div>
-      <div class="step r"><div class="stepn">05</div><div class="stepb"><div class="stepti">Homologação e Ajustes</div><div class="stepd">Validação com usuários reais da operação. Refinamentos até a solução estar perfeita para o time.</div></div></div>
-      <div class="step r"><div class="stepn">06</div><div class="stepb"><div class="stepti">Implantação Assistida</div><div class="stepd">Treinamento completo, migração de dados e acompanhamento durante toda a transição da equipe.</div></div></div>
-      <div class="step r"><div class="stepn">07</div><div class="stepb"><div class="stepti">Operação Assistida Gratuita</div><div class="stepd">Primeiro mês sem custos para validar os ganhos e garantir adaptação total da equipe ao sistema.</div></div></div>
-      <div class="step r"><div class="stepn">08</div><div class="stepb"><div class="stepti">Evolução Contínua</div><div class="stepd">A solução evolui com sua empresa. Novos módulos, integrações e funcionalidades conforme a operação cresce.</div></div></div>
-    </div>
+<section id="metodo" style="padding:100px 0;background:#fff">
+<div class="wrap">
+  <div class="tc r">
+    <span class="tag"><span class="tdot"></span>Nosso processo</span>
+    <h2 class="stit">Como trabalhamos</h2>
+    <p class="ssub" style="margin:0 auto">Do diagnóstico ao resultado — simples, rápido e sem surpresas.</p>
   </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3.5rem" class="r">
+
+    <div style="background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(21,87,212,.13)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="font-family:var(--ff);font-size:2.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem">01</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Diagnóstico</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.7">Entendemos o problema, a causa raiz e o que realmente trava o crescimento do negócio.</div>
+    </div>
+
+    <div style="background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(21,87,212,.13)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="font-family:var(--ff);font-size:2.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem">02</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Protótipo</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.7">Você visualiza a solução navegável em até 72 horas — antes de qualquer investimento.</div>
+    </div>
+
+    <div style="background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(21,87,212,.13)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="font-family:var(--ff);font-size:2.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem">03</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Desenvolvimento</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.7">Construímos e validamos a solução com sua equipe — com entregas contínuas e acompanhamento próximo.</div>
+    </div>
+
+    <div style="background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(21,87,212,.13)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="font-family:var(--ff);font-size:2.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem">04</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Evolução</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.7">A solução cresce junto com sua empresa. Novas funcionalidades e módulos incorporados conforme o negócio evolui.</div>
+    </div>
+
+  </div>
+</div>
 </section>
 
-<!-- FORMATOS DE SOLUÇÃO -->
-<section class="tec" id="formatos">
-  <div class="wrap tc">
-    <div class="r"><span class="tag"><span class="tdot"></span>O formato segue o problema</span><h2 class="stit">Desenvolvemos qualquer tipo<br>de solução digital</h2><p class="ssub" style="margin:0 auto">Não existe formato fixo. Após o diagnóstico, definimos juntos qual é a melhor abordagem para resolver o seu gargalo.</p></div>
-    <div class="tecpills r">
-      <div class="tecpill" style="font-size:.83rem;padding:.58rem 1.3rem"><div class="tecdot" style="background:#1557D4"></div>ERP Personalizado</div>
-      <div class="tecpill" style="font-size:.83rem;padding:.58rem 1.3rem"><div class="tecdot" style="background:#1E6EFF"></div>Aplicativo Mobile</div>
-      <div class="tecpill" style="font-size:.83rem;padding:.58rem 1.3rem"><div class="tecdot" style="background:#00AAFF"></div>Portal Web</div>
-      <div class="tecpill" style="font-size:.83rem;padding:.58rem 1.3rem"><div class="tecdot" style="background:#0D52C8"></div>Dashboard Executivo</div>
-      <div class="tecpill" style="font-size:.83rem;padding:.58rem 1.3rem"><div class="tecdot" style="background:#3B82F6"></div>Automação de Processos</div>
-      <div class="tecpill" style="font-size:.83rem;padding:.58rem 1.3rem"><div class="tecdot" style="background:#8B5CF6"></div>Inteligência Artificial</div>
-      <div class="tecpill" style="font-size:.83rem;padding:.58rem 1.3rem"><div class="tecdot" style="background:#60A5FA"></div>Integrações e APIs</div>
-      <div class="tecpill" style="font-size:.83rem;padding:.58rem 1.3rem"><div class="tecdot" style="background:#93C5FD"></div>Sistema Web</div>
-      <div class="tecpill" style="font-size:.83rem;padding:.58rem 1.3rem"><div class="tecdot" style="background:#BFDBFE"></div>Relatórios e BI</div>
-    </div>
-    <p class="r" style="margin-top:1.8rem;font-size:.82rem;color:var(--muted2);font-style:italic">Utilizamos as IAs e tecnologias mais avançadas do mercado para garantir velocidade, qualidade e escalabilidade em cada entrega.</p>
-  </div>
-</section>
 
 <!-- CTA -->
 <section class="cta">
@@ -801,7 +858,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
     <div class="cta-in r">
       <span class="tag"><span class="tdot"></span>Pronto para começar?</span>
       <h2 class="stit">Qual gargalo está travando<br><span class="gt">o crescimento da sua empresa?</span></h2>
-      <p style="color:var(--muted);max-width:500px;margin:1.1rem auto 2.3rem;line-height:1.8">Conte o problema. Nós fazemos o diagnóstico, mapeamos a causa raiz e desenvolvemos a solução certa — seja ela um ERP, aplicativo, automação, dashboard ou inteligência artificial.</p>
+      <p style="color:var(--muted);max-width:460px;margin:1.1rem auto 2.3rem;line-height:1.8">Conte o problema. Nós fazemos o diagnóstico e desenvolvemos a solução certa — qualquer que seja o formato.</p>
       <a href="#diagnostico" class="btn btnb" style="font-size:.98rem;padding:.98rem 2.3rem;text-decoration:none">→ Solicitar Diagnóstico Gratuito</a>
     </div>
   </div>
@@ -810,22 +867,29 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 <!-- FORMULÁRIO -->
 <section class="form" id="diagnostico">
   <div class="wrap">
-    <div class="tc r"><span class="tag"><span class="tdot"></span>Diagnóstico estratégico gratuito</span><h2 class="stit">Conte o gargalo.<br>Nós desenvolvemos a solução.</h2><p class="ssub">Preencha abaixo. Em até 24h úteis, nossa equipe entra em contato com uma análise inicial do seu caso — sem compromisso.</p></div>
+    <div class="tc r"><span class="tag"><span class="tdot"></span>Diagnóstico estratégico gratuito</span><h2 class="stit">Agende seu<br>diagnóstico estratégico.</h2><p class="ssub">Preencha abaixo. Em até 24h úteis nossa equipe entra em contato com uma análise inicial — sem compromisso.</p></div>
     <div class="formw r">
       <form class="fgrid" id="cf">
-        <div class="fg"><label class="flbl">Nome completo</label><input class="fi" type="text" placeholder="Seu nome"></div>
-        <div class="fg"><label class="flbl">Empresa</label><input class="fi" type="text" placeholder="Nome da empresa"></div>
-        <div class="fg"><label class="flbl">Cargo</label><input class="fi" type="text" placeholder="Seu cargo"></div>
-        <div class="fg"><label class="flbl">E-mail</label><input class="fi" type="email" placeholder="email@empresa.com"></div>
-        <div class="fg"><label class="flbl">WhatsApp</label><input class="fi" type="tel" placeholder="(11) 99999-9999"></div>
-        <div class="fg"><label class="flbl">Segmento</label><select class="fsel"><option value="">Selecione o segmento</option><option>Industrial / Manufatura</option><option>Metalurgia / Fundição</option><option>Automotivo</option><option>Moveleiro</option><option>Estética / Saúde</option><option>Alimentício</option><option>Varejo / E-commerce</option><option>Logística</option><option>Outro</option></select></div>
-        <div class="fg"><label class="flbl">Número de colaboradores</label><select class="fsel"><option value="">Selecione</option><option>1 a 10</option><option>11 a 50</option><option>51 a 200</option><option>201 a 500</option><option>Acima de 500</option></select></div>
-        <div class="fg"><label class="flbl">Prazo para implementação</label><select class="fsel"><option value="">Selecione</option><option>Imediato (até 30 dias)</option><option>Curto prazo (1 a 3 meses)</option><option>Médio prazo (3 a 6 meses)</option><option>Longo prazo (+ de 6 meses)</option></select></div>
-        <div class="fg fl"><label class="flbl">Principal desafio ou gargalo atual</label><textarea class="fta" placeholder="Descreva o principal problema que você enfrenta hoje na operação..."></textarea></div>
-        <div class="fg fl"><label class="flbl">O que deseja automatizar ou melhorar?</label><textarea class="fta" placeholder="Ex: controle de produção, gestão de estoque, relatórios gerenciais, processos manuais..."></textarea></div>
-        <div style="grid-column:1/-1"><button type="button" class="fsub" onclick="submitForm()">Diagnosticar Meu Problema Gratuitamente →</button></div>
+        <div class="fg"><label class="flbl">Nome completo</label><input id="f-nome" class="fi" type="text" placeholder="Seu nome"></div>
+        <div class="fg"><label class="flbl">Empresa</label><input id="f-empresa" class="fi" type="text" placeholder="Nome da empresa"></div>
+        <div class="fg"><label class="flbl">Cargo</label><input id="f-cargo" class="fi" type="text" placeholder="Seu cargo"></div>
+        <div class="fg"><label class="flbl">E-mail</label><input id="f-email" class="fi" type="email" placeholder="email@empresa.com"></div>
+        <div class="fg"><label class="flbl">WhatsApp</label><input id="f-whatsapp" class="fi" type="tel" placeholder="(11) 99999-9999"></div>
+        <div class="fg"><label class="flbl">Segmento</label><select id="f-segmento" class="fsel"><option value="">Selecione o segmento</option><option>Industrial / Manufatura</option><option>Metalurgia / Fundição</option><option>Automotivo</option><option>Moveleiro</option><option>Estética / Saúde</option><option>Alimentício</option><option>Varejo / E-commerce</option><option>Logística</option><option>Outro</option></select></div>
+        <div class="fg"><label class="flbl">Número de colaboradores</label><select id="f-colaboradores" class="fsel"><option value="">Selecione</option><option>1 a 10</option><option>11 a 50</option><option>51 a 200</option><option>201 a 500</option><option>Acima de 500</option></select></div>
+        <div class="fg"><label class="flbl">Prazo para implementação</label><select id="f-prazo" class="fsel"><option value="">Selecione</option><option>Imediato (até 30 dias)</option><option>Curto prazo (1 a 3 meses)</option><option>Médio prazo (3 a 6 meses)</option><option>Longo prazo (+ de 6 meses)</option></select></div>
+        <div class="fg fl"><label class="flbl">Principal desafio ou gargalo atual</label><textarea id="f-desafio" class="fta" placeholder="Descreva o principal problema que você enfrenta hoje na operação..."></textarea></div>
+        <div class="fg fl"><label class="flbl">O que deseja automatizar ou melhorar?</label><textarea id="f-automacao" class="fta" placeholder="Ex: controle de produção, gestão de estoque, relatórios gerenciais, processos manuais..."></textarea></div>
+        <div style="grid-column:1/-1"><button id="f-submit" type="button" class="fsub" onclick="submitForm()">Agendar Diagnóstico Estratégico Gratuito →</button></div>
       </form>
-      <div id="fok"><div style="font-size:3rem;margin-bottom:1rem">✅</div><div style="font-size:1.25rem;font-weight:800;color:var(--ink);margin-bottom:.4rem">Recebemos sua solicitação!</div><div style="font-size:.86rem;color:var(--muted)">Nossa equipe entrará em contato em até 24h úteis pelo WhatsApp ou e-mail informado.</div></div>
+      <div id="fok" style="text-align:center;padding:2.5rem 1rem">
+  <div style="font-size:3rem;margin-bottom:1.2rem">✅</div>
+  <div style="font-size:1.3rem;font-weight:800;color:var(--ink);margin-bottom:.6rem">Diagnóstico registrado com sucesso!</div>
+  <div style="font-size:.9rem;color:var(--muted);line-height:1.8;max-width:420px;margin:0 auto">
+    Recebemos suas informações e em breve nossa equipe entrará em contato para dar início ao seu diagnóstico estratégico.<br><br>
+    <strong style="color:var(--ink)">Próximo passo:</strong> verifique seu e-mail — você receberá uma confirmação em instantes.
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -833,35 +897,101 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 <!-- FOOTER -->
 <footer>
   <div class="fotin">
-    <div class="fotbr"><div class="fotbox"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM17 14a3 3 0 100 6 3 3 0 000-6z"/></svg></div><div><div class="fotn">NexLow</div><div class="fots">Automatize. Simplifique. Cresça.</div></div></div>
+    <div class="fotbr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" style="height:42px;width:auto;display:block">
+          <defs>
+            <linearGradient id="fIG" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0D3FA0"/>
+              <stop offset="100%" stop-color="#1E6EFF"/>
+            </linearGradient>
+            <linearGradient id="fCG" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0EA5E9"/>
+              <stop offset="100%" stop-color="#38BDF8"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(20,20)">
+            <rect x="0" y="0" width="120" height="120" rx="22" ry="22" fill="url(#fIG)"/>
+            <rect x="18" y="26" width="10" height="56" rx="2" fill="white"/>
+            <rect x="54" y="26" width="10" height="56" rx="2" fill="white"/>
+            <polygon points="18,26 28,26 64,82 54,82" fill="white"/>
+            <rect x="72" y="30" width="1.5" height="48" rx="0.75" fill="rgba(255,255,255,0.25)"/>
+            <rect x="80" y="26" width="10" height="56" rx="2" fill="white"/>
+            <rect x="80" y="72" width="24" height="10" rx="2" fill="url(#fCG)"/>
+            <circle cx="100" cy="100" r="4.5" fill="#38BDF8"/>
+          </g>
+          <text x="164" y="92" font-family="'DM Sans','Outfit','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="46" letter-spacing="-1.5" fill="#FFFFFF">Nexlow</text>
+          <text x="165" y="118" font-family="'DM Sans','Outfit','Helvetica Neue',Arial,sans-serif" font-weight="400" font-size="13.5" letter-spacing="2.8" fill="#38BDF8" opacity="0.9">AUTOMATIZE. SIMPLIFIQUE. CRESÇA.</text>
+        </svg></div>
     <div style="display:flex;flex-direction:column;gap:.35rem;align-items:center">
       <div class="fotc">© 2025 NexLow. Todos os direitos reservados.</div>
-      <div style="font-size:.6rem;color:rgba(255,255,255,.12)">Stack: React · Next.js · PostgreSQL · Supabase · OpenAI · Claude · Gemini</div>
     </div>
     <ul class="fotls"><li><a href="#dores">Soluções</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#metodo">Método</a></li><li><a href="#casos">Cases</a></li><li><a href="#diagnostico">Diagnóstico</a></li></ul>
   </div>
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+
 // Hero bars
-(()=>{const d=[40,55,48,76,62,83,88];const c=document.getElementById('hBars');d.forEach(h=>{const b=document.createElement('div');b.className='dbar';b.style.cssText=`height:${h}%;background:linear-gradient(180deg,#1557D4,rgba(21,87,212,.15))`;c.appendChild(b)})})();
+(function(){
+  const c = document.getElementById('hBars');
+  if (!c) return;
+  [40,55,48,76,62,83,88].forEach(h=>{
+    const b=document.createElement('div');
+    b.className='dbar';
+    b.style.cssText=`height:${h}%;background:linear-gradient(180deg,#1557D4,rgba(21,87,212,.15))`;
+    c.appendChild(b);
+  });
+})();
+
 // Sol NexMetal bars
-(()=>{const d=[52,67,60,84,70,88,80];const c=document.getElementById('snmBars');d.forEach(h=>{const b=document.createElement('div');b.className='spbar2';b.style.cssText=`height:${h}%;background:linear-gradient(180deg,#1557D4,rgba(21,87,212,.1))`;c.appendChild(b)})})();
+(function(){
+  const c = document.getElementById('snmBars');
+  if (!c) return;
+  [52,67,60,84,70,88,80].forEach(h=>{
+    const b=document.createElement('div');
+    b.className='spbar2';
+    b.style.cssText=`height:${h}%;background:linear-gradient(180deg,#1557D4,rgba(21,87,212,.1))`;
+    c.appendChild(b);
+  });
+})();
 
 // Nav
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40));
+const nav = document.getElementById('nav');
+if (nav) window.addEventListener('scroll', ()=>nav.classList.toggle('solid', scrollY>40));
 
-// Reveal
-const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}})},{threshold:.09});
+// Reveal on scroll
+const ro = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); ro.unobserve(e.target); } });
+}, {threshold:.09});
 document.querySelectorAll('.r').forEach(el=>ro.observe(el));
 
 // Count-up
-function countUp(el,t,dur){let s=0,st=t/(dur/16);const iv=setInterval(()=>{s+=st;if(s>=t){el.textContent=t;clearInterval(iv)}else el.textContent=Math.floor(s)},16)}
-new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.cn').forEach(n=>countUp(n,+n.closest('[data-t]').dataset.t,1400))})},{threshold:.5}).observe(document.getElementById('sg'));
+function countUp(el,t,dur){
+  let s=0, st=t/(dur/16);
+  const iv=setInterval(()=>{
+    s+=st;
+    if(s>=t){el.textContent=t;clearInterval(iv);}
+    else el.textContent=Math.floor(s);
+  },16);
+}
+const sgEl = document.getElementById('sg');
+if (sgEl) {
+  new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting) e.target.querySelectorAll('.cn').forEach(n=>countUp(n,+n.closest('[data-t]').dataset.t,1400));
+    });
+  },{threshold:.5}).observe(sgEl);
+}
 
 // Sol tabs
-function showSol(id,btn){document.querySelectorAll('.spanel').forEach(p=>p.classList.remove('act'));document.querySelectorAll('.stab').forEach(t=>t.classList.remove('act'));document.getElementById('sol-'+id).classList.add('act');btn.classList.add('act')}
+function showSol(id,btn){
+  document.querySelectorAll('.spanel').forEach(p=>p.classList.remove('act'));
+  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('act'));
+  const el=document.getElementById('sol-'+id);
+  if(el) el.classList.add('act');
+  btn.classList.add('act');
+}
+window.showSol = showSol;
 
 // Modal
 const MD={
@@ -889,11 +1019,57 @@ const MD={
     {l:'PDV & Estoque',c:`<div style="font-size:.64rem"><div style="margin-bottom:.38rem;padding:.28rem .55rem;background:rgba(21,87,212,.1);border:1px solid rgba(21,87,212,.18);border-radius:4px;color:#60A5FA;font-size:.6rem">📊 3 itens abaixo do mínimo — Unidade 2</div>${[['Produto A','Est: 8','Mín: 20','⚠'],['Produto B','Est: 3','Mín: 15','⚠'],['Produto C','Est: 0','Mín: 10','🔴']].map(([p,e,m,s])=>`<div style="display:flex;gap:.45rem;padding:.26rem 0;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(255,255,255,.42)"><span style="flex:1">${p}</span><span>${e}</span><span>${m}</span><span>${s}</span></div>`).join('')}</div>`}
   ]}
 };
-function openModal(id){const d=MD[id];if(!d)return;document.getElementById('mtit').textContent=d.title;document.getElementById('mscrs').innerHTML=d.screens.map(s=>`<div class="mscr"><div class="mscrl">${s.l}</div><div class="mscri">${s.c}</div></div>`).join('');document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden'}
-function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
-function closeModalOut(e){if(e.target===document.getElementById('modal'))closeModal()}
+window.openModal = function openModal(id){const d=MD[id];if(!d)return;document.getElementById('mtit').textContent=d.title;document.getElementById('mscrs').innerHTML=d.screens.map(s=>`<div class="mscr"><div class="mscrl">${s.l}</div><div class="mscri">${s.c}</div></div>`).join('');document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden'}
+window.closeModal = function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
+window.closeModalOut = function closeModalOut(e){if(e.target===document.getElementById('modal'))closeModal()}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-function submitForm(){document.getElementById('cf').style.display='none';document.getElementById('fok').style.display='block'}
+function submitForm(){
+  // Collect all field values
+  const get = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+
+  const nome         = get('f-nome');
+  const empresa      = get('f-empresa');
+  const cargo        = get('f-cargo');
+  const email        = get('f-email');
+  const whatsapp     = get('f-whatsapp');
+  const segmento     = get('f-segmento');
+  const colaboradores= get('f-colaboradores');
+  const prazo        = get('f-prazo');
+  const desafio      = get('f-desafio');
+  const automacao    = get('f-automacao');
+
+  // Basic validation
+  if (!nome || !email || !whatsapp) {
+    alert('Por favor preencha pelo menos nome, email e WhatsApp.');
+    return;
+  }
+
+  // Show loading state
+  const btn = document.getElementById('f-submit');
+  if (btn) { btn.textContent = 'Enviando...'; btn.disabled = true; btn.style.opacity = '0.7'; }
+
+  const templateParams = {
+    nome, empresa, cargo, email, whatsapp,
+    segmento, colaboradores, prazo, desafio, automacao
+  };
+
+  emailjs.send('service_4e5v7fv', 'template_op1zlcq', templateParams)
+    .then(function() {
+      // Success — show confirmation
+      const cf  = document.getElementById('cf');
+      const fok = document.getElementById('fok');
+      if (cf)  cf.style.display  = 'none';
+      if (fok) fok.style.display = 'block';
+    })
+    .catch(function(error) {
+      console.error('EmailJS error:', error);
+      if (btn) { btn.textContent = 'Diagnosticar Meu Problema Gratuitamente →'; btn.disabled = false; btn.style.opacity = '1'; }
+      alert('Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp: (11) 96338-7866');
+    });
+}
+window.submitForm = submitForm;
+
+}); // end DOMContentLoaded
 </script>
 </body>
 </html>
