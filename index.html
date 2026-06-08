@@ -1055,7 +1055,11 @@ function submitForm(){
 
   emailjs.send('service_4e5v7fv', 'template_op1zlcq', templateParams)
     .then(function() {
-      // Success — show confirmation
+      // Envia email de confirmação para o lead
+      return emailjs.send('service_4e5v7fv', 'template_q3111sn', templateParams);
+    })
+    .then(function() {
+      // Sucesso — exibe tela de confirmação
       const cf  = document.getElementById('cf');
       const fok = document.getElementById('fok');
       if (cf)  cf.style.display  = 'none';
@@ -1063,8 +1067,8 @@ function submitForm(){
     })
     .catch(function(error) {
       console.error('EmailJS error:', error);
-      if (btn) { btn.textContent = 'Diagnosticar Meu Problema Gratuitamente →'; btn.disabled = false; btn.style.opacity = '1'; }
-      alert('Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp: (11) 96338-7866');
+      if (btn) { btn.textContent = 'Agendar Diagnóstico Estratégico Gratuito →'; btn.disabled = false; btn.style.opacity = '1'; }
+      alert('Erro ao enviar. Tente novamente ou entre em contato: renang.nexlow@gmail.com');
     });
 }
 window.submitForm = submitForm;
