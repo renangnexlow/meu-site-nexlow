@@ -377,21 +377,182 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 /* Demo overlay */
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* RESPONSIVE */
+
+/* Hamburger mobile */
+/* Mobile grid helpers */
+@media(max-width:600px){
+  .mobile-grid-3{
+    grid-template-columns:1fr !important;
+    gap:1rem !important;
+  }
+  .eco-grid{
+    grid-template-columns:1fr !important;
+    gap:1rem !important;
+  }
+  .difg{
+    grid-template-columns:1fr !important;
+    gap:1rem !important;
+  }
+  /* Padding de todas as seções */
+  .wrap{padding:0 1.2rem !important}
+  section > .wrap{padding:0 1.2rem !important}
+  /* Custo invisível cards — compactos e horizontais no mobile */
+  .perde-grid > div{
+    padding:.85rem 1rem !important;
+    border-radius:14px !important;
+  }
+  /* Emoji menor */
+  .perde-grid > div > div[style*="font-size:2rem"]{
+    font-size:1.3rem !important;
+    margin-bottom:.4rem !important;
+  }
+  /* Título do card */
+  .perde-grid > div > div[style*="font-size:1rem"]{
+    font-size:.88rem !important;
+    margin-bottom:.25rem !important;
+  }
+  /* Descrição do card */
+  .perde-grid > div > div[style*="font-size:.88rem"]{
+    font-size:.78rem !important;
+    line-height:1.5 !important;
+  }
+  /* Projetos */
+  .ecard .eprev{height:120px !important}
+  /* Método 4 cards — 2x2 no mobile médio */
+  .met-4{grid-template-columns:1fr 1fr !important;gap:.75rem !important}
+}
 @media(max-width:960px){
-  .hero-in,.hist-in,.t72-inner,.naos-in{grid-template-columns:1fr}
+  .eco-grid{grid-template-columns:1fr 1fr !important}
+  .mobile-grid-3{grid-template-columns:1fr 1fr !important}
+}
+
+@media(max-width:960px){
+  #menuBtn{display:flex !important}
+  #navCta{display:none}
+}
+@media(min-width:961px){
+  #mobileMenu{display:none !important}
+}
+/* Hist nums grid */
+@media(max-width:600px){
+  .hist-nums-grid{grid-template-columns:1fr 1fr !important}
+  .hist-in{grid-template-columns:1fr !important;gap:2.5rem !important}
+}
+/* ── RESPONSIVE ── */
+
+/* Tablet — 960px */
+@media(max-width:960px){
+  /* Nav */
+  .nlinks{display:none}
+  .navw{padding:0 1.5rem}
+
+  /* Hero */
+  .hero{padding:88px 1.5rem 60px}
+  .hero-in{grid-template-columns:1fr;gap:2.5rem}
   .hvis{display:none}
-  .sgrid,.difg,.eco-grid,.casos-grid{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:clamp(2.2rem,7vw,3.2rem)}
+
+  /* 72h */
+  .t72{padding:70px 0}
+  .t72-inner{grid-template-columns:1fr;gap:3rem}
+
+  /* História */
+  .hist-in{grid-template-columns:1fr;gap:3rem}
+
+  /* Grids 3 col → 2 col */
+  .difg,.eco-grid{grid-template-columns:1fr 1fr}
+
+  /* Grids 4 col → 2 col */
+  .sgrid{grid-template-columns:1fr 1fr}
+
+  /* Perde 3 col → 1 col */
   .perde-grid{grid-template-columns:1fr}
+
+  /* Comparativo */
   .cmp-split{grid-template-columns:1fr}
+
+  /* Soluções */
   .spanel.act{grid-template-columns:1fr}
   .sprev{display:none}
+
+  /* Modal */
   .mscrs{grid-template-columns:1fr}
-  .nlinks{display:none}
+
+  /* Seções */
+  .hist-sec,.difs,.sols,.eco,.cmp,.met,.tec,.form,
+  section[id]{padding-left:1.5rem;padding-right:1.5rem}
+}
+
+/* Mobile — 600px */
+@media(max-width:600px){
+  /* Nav */
+  .nlogo-tag{display:none}
+
+  /* Hero */
+  .hero{padding:80px 1.2rem 50px}
+  .hero h1{font-size:clamp(1.9rem,8vw,2.8rem);letter-spacing:-.03em}
+  .hdesc{font-size:.95rem}
+  .hbtns{flex-direction:column;gap:.7rem}
+  .hbtns .btn{width:100%;justify-content:center;text-align:center}
+  .hproof{flex-direction:column;align-items:flex-start;gap:.6rem}
+  .hptxt{font-size:.72rem}
+
+  /* Grids → 1 col */
+  .difg,.eco-grid,.sgrid,.perde-grid{grid-template-columns:1fr}
+
+  /* Formulário */
+  .fgrid{grid-template-columns:1fr}
+  .formw{padding:1.8rem 1.2rem}
+
+  /* Seção stats */
+  .sgrid{grid-template-columns:1fr 1fr}
+
+  /* Seção 72h steps */
+  .t72-inner{gap:2rem}
+
+  /* Método 4 cards → 2x2 → 1 col */
+  .met-4{grid-template-columns:1fr !important}
+
+  /* Tabs soluções */
+  .stabs{gap:.35rem;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:.5rem}
+  .stab{font-size:.75rem;padding:.4rem .9rem;flex-shrink:0}
+
+  /* Ecards */
+  .ecard{border-radius:14px}
+
+  /* Seção padding */
+  .wrap{padding:0 1.2rem}
+  section{padding-left:1.2rem !important;padding-right:1.2rem !important}
+
+  /* CTA */
+  .cta-in .btn{width:100%;justify-content:center}
+
+  /* Títulos */
+  h2.stit{font-size:clamp(1.6rem,6vw,2.2rem)}
+}
+
+/* Mobile pequeno — 400px */
+
+@media(max-width:960px){
+  .eco-grid{display:grid;grid-template-columns:1fr 1fr !important}
+  .cmp-split{display:grid;grid-template-columns:1fr !important}
 }
 @media(max-width:600px){
-  .sgrid,.difg,.eco-grid,.casos-grid{grid-template-columns:1fr}
-  .fgrid{grid-template-columns:1fr}
+  .eco-grid{display:grid;grid-template-columns:1fr !important}
+}
+@media(max-width:600px){
+  .checklist-grid{display:grid;grid-template-columns:1fr !important}
+  .casos-grid{display:grid;grid-template-columns:1fr !important}
+}
+@media(max-width:600px){
+  .mobile-hidden{display:none !important}
+  .mobile-show-more{display:block !important}
+}
+@media(max-width:400px){
+  .hero h1{font-size:1.75rem}
+  h2.stit{font-size:1.5rem}
+  .btn{font-size:.82rem;padding:.75rem 1.2rem}
+  .sgrid{grid-template-columns:1fr}
 }
 </style>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -434,9 +595,25 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
       <li><a href="#metodo">Método</a></li>
       <li><a href="#casos">Cases</a></li>
     </ul>
-    <a href="#diagnostico" class="btn btnb" style="padding:.62rem 1.35rem;font-size:.82rem;">Agendar Diagnóstico</a>
+    <a href="#diagnostico" class="btn btnb" style="padding:.62rem 1.35rem;font-size:.82rem;" id="navCta">Agendar Diagnóstico</a>
+    <!-- Hamburger -->
+    <button id="menuBtn" onclick="toggleMenu()" style="display:none;background:none;border:none;cursor:pointer;padding:.4rem;flex-direction:column;gap:5px;align-items:center;justify-content:center" aria-label="Menu">
+      <span id="hb1" style="display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s"></span>
+      <span id="hb2" style="display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s"></span>
+      <span id="hb3" style="display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s"></span>
+    </button>
   </div>
 </nav>
+<!-- Mobile menu dropdown -->
+<div id="mobileMenu" style="display:none;position:fixed;top:64px;left:0;right:0;background:#ffffff;border-bottom:1px solid var(--line);z-index:9998;padding:1.2rem 1.5rem;box-shadow:0 8px 40px rgba(0,0,0,.18)">
+  <nav style="display:flex;flex-direction:column;gap:.2rem">
+    <a href="#projetos" onclick="closeMenu()" style="font-size:.95rem;font-weight:600;color:var(--ink2);padding:.7rem 0;border-bottom:1px solid var(--line);text-decoration:none">Soluções</a>
+    <a href="#diferenciais" onclick="closeMenu()" style="font-size:.95rem;font-weight:600;color:var(--ink2);padding:.7rem 0;border-bottom:1px solid var(--line);text-decoration:none">Diferenciais</a>
+    <a href="#metodo" onclick="closeMenu()" style="font-size:.95rem;font-weight:600;color:var(--ink2);padding:.7rem 0;border-bottom:1px solid var(--line);text-decoration:none">Método</a>
+    <a href="#historia" onclick="closeMenu()" style="font-size:.95rem;font-weight:600;color:var(--ink2);padding:.7rem 0;border-bottom:1px solid var(--line);text-decoration:none">Empresa</a>
+    <a href="#diagnostico" onclick="closeMenu()" class="btn btnb" style="margin-top:.8rem;width:100%;justify-content:center;text-decoration:none">Agendar Diagnóstico</a>
+  </nav>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -559,13 +736,13 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 </section>
 
 <!-- CUSTO DO PROBLEMA -->
-<section style="padding:100px 0;background:var(--ink)">
+<section style="padding:clamp(60px,8vw,100px) 0;background:var(--ink)">
 <div class="wrap">
   <div class="tc r">
     <span class="tag" style="color:var(--cyan)"><span class="tdot"></span>O custo invisível</span>
     <h2 class="stit" style="color:#fff">Qual desses problemas<br>você reconhece no seu negócio?</h2>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem" class="r">
+  <div class="r perde-grid mobile-grid-3">
 
     <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem;transition:all .3s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
       <div style="font-size:2rem;margin-bottom:1rem">🔄</div>
@@ -596,12 +773,12 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 </section>
 
 <!-- MANIFESTO -->
-<section style="padding:100px 0;background:linear-gradient(135deg,#0D1B3E 0%,#0A0F1E 100%);position:relative;overflow:hidden">
+<section style="padding:clamp(60px,8vw,100px) 0;background:linear-gradient(135deg,#0D1B3E 0%,#0A0F1E 100%);position:relative;overflow:hidden">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 30% 50%,rgba(21,87,212,.15),transparent);pointer-events:none"></div>
   <div class="wrap" style="position:relative;z-index:1">
     <div class="r" style="max-width:720px;margin:0 auto;text-align:center">
       <span class="tag" style="color:var(--cyan);justify-content:center"><span class="tdot"></span>Manifesto NexLow</span>
-      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.035em;margin-bottom:2rem">Não acreditamos<br>em soluções prontas.</h2>
+      <h2 style="font-size:clamp(1.6rem,6vw,2.8rem);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.035em;margin-bottom:2rem">Não acreditamos<br>em soluções prontas.</h2>
       <p style="font-size:1.05rem;color:rgba(255,255,255,.6);line-height:1.85;max-width:580px;margin:0 auto 1.2rem">Acreditamos em entender pessoas, processos e objetivos antes de desenvolver qualquer tecnologia.</p>
       <p style="font-size:1.05rem;color:rgba(255,255,255,.6);line-height:1.85;max-width:580px;margin:0 auto">Por isso cada projeto nasce de um diagnóstico real — e não de uma proposta genérica.</p>
     </div>
@@ -609,16 +786,16 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 </section>
 
 <!-- HISTÓRIA -->
-<section id="historia" style="padding:100px 0;background:#fff">
+<section id="historia" style="padding:clamp(60px,8vw,100px) 0;background:#fff">
 <div class="wrap">
-  <div style="display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:center;max-width:1100px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:center;max-width:1100px;margin:0 auto" class="hist-in">
     <div class="r">
       <span class="tag"><span class="tdot"></span>Quem somos</span>
       <h2 class="stit">Experiência real.<br>Resultados reais.</h2>
       <p style="font-size:1rem;color:var(--ink2);line-height:1.9;margin-bottom:1rem"><strong>Renan Gomes</strong>, fundador da NexLow, construiu sua carreira dentro de grandes empresas nacionais e multinacionais dos setores <strong>financeiro, industrial e automotivo</strong>.</p>
       <p style="font-size:1rem;color:var(--ink2);line-height:1.9;margin-bottom:1rem">Desenvolveu soluções aplicadas por equipes no <strong>Brasil, Suécia, França e Argentina</strong>.</p>
       <p style="font-size:1rem;color:var(--ink2);line-height:1.9;margin-bottom:1.5rem">Foi do incômodo com ferramentas genéricas — que forçavam empresas a adaptar seus processos à tecnologia — que nasceu a NexLow: uma consultoria tecnológica que parte do problema, não do produto.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem" class="hist-nums-grid">
         <div style="background:var(--surf2);border:1px solid rgba(21,87,212,.12);border-radius:12px;padding:1.1rem">
           <div style="font-size:1.6rem;font-weight:900;color:var(--blue);letter-spacing:-.03em;line-height:1">4</div>
           <div style="font-size:.75rem;color:var(--muted);margin-top:.3rem;line-height:1.4">Países onde soluções foram aplicadas</div>
@@ -641,14 +818,14 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 </section>
 
 <!-- DIFERENCIAIS -->
-<section id="diferenciais" style="padding:100px 0;background:var(--surf)">
+<section id="diferenciais" style="padding:clamp(60px,8vw,100px) 0;background:var(--surf)">
 <div class="wrap">
   <div class="tc r">
     <span class="tag"><span class="tdot"></span>Nossa metodologia</span>
     <h2 class="stit">O que nos diferencia</h2>
     <p class="ssub" style="margin:0 auto">Uma abordagem que parte do problema — não do produto.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem">
+  <div class="r difg mobile-grid-3" style="margin-top:3rem">
 
     <div class="difc r">
       <div class="dico">🔍</div>
@@ -686,7 +863,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 </section>
 
 <!-- SOLUÇÕES EM AÇÃO -->
-<section id="projetos" style="padding:110px 0;background:#fff">
+<section id="projetos" style="padding:clamp(60px,8vw,110px) 0;background:#fff">
 <div class="wrap">
 
   <!-- Header -->
@@ -704,7 +881,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
   </div>
 
   <!-- Project cards -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-bottom:1.5rem" class="r">
+  <div class="r eco-grid" style="gap:1.4rem;margin-bottom:1.5rem">
 
     <!-- ENGEMET -->
     <div class="ecard">
@@ -758,7 +935,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
     </div>
 
     <!-- BEAUTYFLOW -->
-    <div class="ecard">
+    <div class="ecard mobile-hidden"d">
       <div class="eprev" style="background:linear-gradient(135deg,#07070d,#16161f);cursor:default">
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
           <div style="width:48px;height:48px;border-radius:50%;background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
@@ -775,7 +952,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
     </div>
 
     <!-- REALEZA -->
-    <div class="ecard">
+    <div class="ecard mobile-hidden"d">
       <div class="eprev" style="background:linear-gradient(135deg,#1a0d12,#2d1520);cursor:default">
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
           <div style="width:48px;height:48px;border-radius:50%;background:rgba(204,49,86,0.15);border:1px solid rgba(204,49,86,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
@@ -792,7 +969,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
     </div>
 
     <!-- +3 projetos -->
-    <div class="ecard" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#fff;border:1.5px dashed rgba(21,87,212,.26);cursor:default">
+    <div class="ecard mobile-hidden"d" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#fff;border:1.5px dashed rgba(21,87,212,.26);cursor:default">
       <div style="font-size:1.8rem;color:var(--blue);margin-bottom:.7rem;font-weight:900">+3</div>
       <div class="ename" style="margin-bottom:.4rem">Projetos em avaliação</div>
       <div class="edesc" style="margin-bottom:1.2rem">Soluções em desenvolvimento para novos clientes. A solução segue o diagnóstico — não o inverso.</div>
@@ -801,7 +978,14 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 
   </div>
 
-    <!-- Bottom CTA strip -->
+    <!-- Ver mais projetos — só mobile -->
+  <div class="mobile-show-more" style="display:none;text-align:center;margin-bottom:1rem">
+    <button onclick="showAllProjects(this)" style="background:none;border:1.5px solid rgba(21,87,212,.3);border-radius:100px;padding:.55rem 1.4rem;font-size:.82rem;font-weight:600;color:var(--blue);cursor:pointer;font-family:var(--ff)">
+      Ver todos os projetos ↓
+    </button>
+  </div>
+
+  <!-- Bottom CTA strip -->
   <div class="r" style="text-align:center;padding:1.5rem;background:var(--surf2);border-radius:var(--rl);border:1px solid rgba(21,87,212,.12)">
     <p style="font-size:.88rem;color:var(--ink2);margin-bottom:.6rem">Seu setor não está listado? <strong>O problema é o ponto de partida, não o segmento.</strong></p>
     <a href="#diagnostico" class="btn btnb" style="font-size:.85rem;padding:.75rem 1.7rem;text-decoration:none">Diagnosticar meu gargalo →</a>
@@ -813,7 +997,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 </script>
 
 <!-- MÉTODO -->
-<section id="metodo" style="padding:100px 0;background:#fff">
+<section id="metodo" style="padding:clamp(60px,8vw,100px) 0;background:#fff">
 <div class="wrap">
   <div class="tc r">
     <span class="tag"><span class="tdot"></span>Nosso processo</span>
@@ -821,7 +1005,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
     <p class="ssub" style="margin:0 auto">Do diagnóstico ao resultado — simples, rápido e sem surpresas.</p>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3.5rem" class="r">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3.5rem" class="r met-4">
 
     <div style="background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(21,87,212,.13)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
       <div style="font-family:var(--ff);font-size:2.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem">01</div>
@@ -1074,6 +1258,47 @@ function submitForm(){
 window.submitForm = submitForm;
 
 }); // end DOMContentLoaded
+
+window.showAllProjects = function(btn) {
+  document.querySelectorAll('.mobile-hidden').forEach(el => {
+    el.style.display = 'block';
+    el.classList.remove('mobile-hidden');
+  });
+  btn.parentElement.style.display = 'none';
+};
+
+// ── Hamburger menu
+window.toggleMenu = function() {
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.getElementById('menuBtn');
+  const h1   = document.getElementById('hb1');
+  const h3   = document.getElementById('hb3');
+  const open = menu.style.display === 'block';
+  menu.style.display = open ? 'none' : 'block';
+  // animate to X
+  if (!open) {
+    h1.style.transform = 'translateY(7px) rotate(45deg)';
+    h3.style.transform = 'translateY(-7px) rotate(-45deg)';
+    document.getElementById('hb2').style.opacity = '0';
+  } else {
+    h1.style.transform = 'none';
+    h3.style.transform = 'none';
+    document.getElementById('hb2').style.opacity = '1';
+  }
+};
+
+window.closeMenu = function() {
+  const menu = document.getElementById('mobileMenu');
+  menu.style.display = 'none';
+  document.getElementById('hb1').style.transform = 'none';
+  document.getElementById('hb3').style.transform = 'none';
+  document.getElementById('hb2').style.opacity = '1';
+};
+
+// Close menu on resize
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 960) window.closeMenu();
+});
 </script>
 </body>
 </html>
