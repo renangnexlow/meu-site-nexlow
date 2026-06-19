@@ -129,7 +129,7 @@ nav.solid{background:rgba(255,255,255,.97);box-shadow:0 2px 14px rgba(0,0,0,.06)
 
 /* STATS */
 .stats{padding:90px 0;background:#fff}
-.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+.sgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem}
 .scard{background:#fff;border:1px solid var(--line);border-radius:var(--rl);padding:1.9rem 1.7rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
 .scard:hover{transform:translateY(-5px);box-shadow:var(--shb)}
 .scard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--grad);opacity:0;transition:opacity .3s}
@@ -419,7 +419,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
   /* Projetos */
   .ecard .eprev{height:120px !important}
   /* Método 4 cards — 2x2 no mobile médio */
-  .met-4{grid-template-columns:1fr 1fr !important;gap:.75rem !important}
+  .met-steps{grid-template-columns:1fr 1fr !important;gap:.75rem !important}
 }
 @media(max-width:960px){
   .eco-grid{grid-template-columns:1fr 1fr !important}
@@ -545,8 +545,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
   .casos-grid{display:grid;grid-template-columns:1fr !important}
 }
 @media(max-width:600px){
-  .mobile-hidden{display:none !important}
-  .mobile-show-more{display:block !important}
+  
 }
 @media(max-width:400px){
   .hero h1{font-size:1.75rem}
@@ -662,7 +661,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
     <div class="hvis r d2">
       <div class="chip c1"><div class="chip-ico" style="background:rgba(16,185,129,.1)">✅</div><div><div style="font-size:.72rem;font-weight:700;color:#059669">OEE 91.4%</div><div style="font-size:.58rem;color:var(--muted)">↑ +7.2% este mês</div></div></div>
       <div class="chip c2"><div class="chip-ico" style="background:rgba(21,87,212,.1)">🤖</div><div><div style="font-size:.72rem;font-weight:700;color:var(--blue)">IA ativa</div><div style="font-size:.58rem;color:var(--muted)">Recomendação gerada</div></div></div>
-      <div class="chip c3"><div class="chip-ico" style="background:rgba(245,158,11,.1)">⚡</div><div><div style="font-size:.72rem;font-weight:700;color:#D97706">Protótipo em 72h</div><div style="font-size:.58rem;color:var(--muted)">Antes de investir</div></div></div>
+      <div class="chip c3"><div class="chip-ico" style="background:rgba(245,158,11,.1)">⚡</div><div><div style="font-size:.72rem;font-weight:700;color:#D97706">Protótipo em 72h úteis</div><div style="font-size:.58rem;color:var(--muted)">Antes de investir</div></div></div>
       <div class="df">
         <div class="dtb"><div class="ddots"><div class="dd ddr"></div><div class="dd ddy"></div><div class="dd ddg"></div></div><div class="dapp">NexLow · Dashboard Industrial</div></div>
         <div class="dlayout">
@@ -698,10 +697,10 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
   <div class="wrap">
     <div class="t72-inner">
       <div class="r">
-        <span class="tag"><span class="tdot"></span>72 horas que mudam tudo</span>
-        <h2 class="stit">O que acontece em até 72 horas?</h2>
+        <span class="tag"><span class="tdot"></span>72 horas úteis que mudam tudo</span>
+        <h2 class="stit">O que acontece em até 72 horas úteis?</h2>
         <p>Muitas empresas só visualizam a solução depois de assinar contrato e pagar. Na NexLow, o processo é invertido: você vê exatamente como sua solução funcionará antes de qualquer compromisso.</p>
-        <div class="t72-quote">Antes de investir qualquer valor no desenvolvimento, você já visualiza, navega e valida exatamente como a solução vai funcionar. O que costuma levar meses de incerteza, resolvemos em 72 horas.</div>
+        <div class="t72-quote">Antes de investir qualquer valor no desenvolvimento, você já visualiza, navega e valida exatamente como a solução vai funcionar. O que costuma levar meses de incerteza, resolvemos em 72 horas úteis.</div>
       </div>
       <div class="r d1">
         <div class="t72-steps">
@@ -793,23 +792,23 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
       <span class="tag"><span class="tdot"></span>Quem somos</span>
       <h2 class="stit">Experiência real.<br>Resultados reais.</h2>
       <p style="font-size:1rem;color:var(--ink2);line-height:1.9;margin-bottom:1rem"><strong>Renan Gomes</strong>, fundador da NexLow, construiu sua carreira dentro de grandes empresas nacionais e multinacionais dos setores <strong>financeiro, industrial e automotivo</strong>.</p>
-      <p style="font-size:1rem;color:var(--ink2);line-height:1.9;margin-bottom:1rem">Desenvolveu soluções aplicadas por equipes no <strong>Brasil, Suécia, França e Argentina</strong>.</p>
+      <p style="font-size:1rem;color:var(--ink2);line-height:1.9;margin-bottom:1rem">Ao longo dessa trajetória, desenvolveu soluções internas que foram utilizadas por equipes de diferentes áreas e operações — acumulando uma visão sistêmica profunda sobre processos.</p>
       <p style="font-size:1rem;color:var(--ink2);line-height:1.9;margin-bottom:1.5rem">Foi do incômodo com ferramentas genéricas — que forçavam empresas a adaptar seus processos à tecnologia — que nasceu a NexLow: uma consultoria tecnológica que parte do problema, não do produto.</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem" class="hist-nums-grid">
         <div style="background:var(--surf2);border:1px solid rgba(21,87,212,.12);border-radius:12px;padding:1.1rem">
-          <div style="font-size:1.6rem;font-weight:900;color:var(--blue);letter-spacing:-.03em;line-height:1">4</div>
-          <div style="font-size:.75rem;color:var(--muted);margin-top:.3rem;line-height:1.4">Países onde soluções foram aplicadas</div>
+          <div style="font-size:1.6rem;font-weight:900;color:var(--blue);letter-spacing:-.03em;line-height:1">100%</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:.3rem;line-height:1.4">Soluções desenvolvidas sob medida, sem produto de prateleira</div>
         </div>
         <div style="background:var(--surf2);border:1px solid rgba(21,87,212,.12);border-radius:12px;padding:1.1rem">
           <div style="font-size:1.6rem;font-weight:900;color:var(--blue);letter-spacing:-.03em;line-height:1">72h</div>
-          <div style="font-size:.75rem;color:var(--muted);margin-top:.3rem;line-height:1.4">Para você visualizar sua solução</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:.3rem;line-height:1.4">Úteis para você visualizar sua solução</div>
         </div>
       </div>
     </div>
     <div class="r d1">
       <div style="display:flex;flex-direction:column">
         <div style="display:flex;gap:1.2rem"><div style="display:flex;flex-direction:column;align-items:center;min-width:28px"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:4px;box-shadow:0 0 0 3px rgba(21,87,212,.16)"></div><div style="width:1px;flex:1;background:var(--line);min-height:24px;margin:4px 0"></div></div><div style="padding-bottom:1.7rem"><div style="font-size:.62rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Origem</div><div style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Multinacionais e indústria</div><div style="font-size:.79rem;color:var(--muted);line-height:1.6">Atuação em grandes empresas, desenvolvendo visão sistêmica profunda sobre processos e operações.</div></div></div>
-        <div style="display:flex;gap:1.2rem"><div style="display:flex;flex-direction:column;align-items:center;min-width:28px"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:4px;box-shadow:0 0 0 3px rgba(21,87,212,.16)"></div><div style="width:1px;flex:1;background:var(--line);min-height:24px;margin:4px 0"></div></div><div style="padding-bottom:1.7rem"><div style="font-size:.62rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Expansão</div><div style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Alcance internacional</div><div style="font-size:.79rem;color:var(--muted);line-height:1.6">Sistemas aplicados em times no Brasil, Suécia, França e Argentina — metodologia validada globalmente.</div></div></div>
+        <div style="display:flex;gap:1.2rem"><div style="display:flex;flex-direction:column;align-items:center;min-width:28px"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:4px;box-shadow:0 0 0 3px rgba(21,87,212,.16)"></div><div style="width:1px;flex:1;background:var(--line);min-height:24px;margin:4px 0"></div></div><div style="padding-bottom:1.7rem"><div style="font-size:.62rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Experiência</div><div style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Soluções para operações reais</div><div style="font-size:.79rem;color:var(--muted);line-height:1.6">Desenvolvimento de sistemas internos aplicados em operações complexas — base da metodologia que sustenta a NexLow hoje.</div></div></div>
         <div style="display:flex;gap:1.2rem"><div style="display:flex;flex-direction:column;align-items:center;min-width:28px"><div style="width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:4px;box-shadow:0 0 0 3px rgba(21,87,212,.16)"></div></div><div style="padding-bottom:0"><div style="font-size:.62rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Hoje</div><div style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.2rem">Fundação da NexLow</div><div style="font-size:.79rem;color:var(--muted);line-height:1.6">Consultoria tecnológica criada para resolver problemas reais através de soluções digitais sob medida.</div></div></div>
       </div>
     </div>
@@ -834,7 +833,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
     </div>
     <div class="difc r d1">
       <div class="dico">⚡</div>
-      <div class="ditt">Protótipo em até 72 horas</div>
+      <div class="ditt">Protótipo em até 72 horas úteis</div>
       <div class="didd">Você visualiza a solução funcionando antes de investir. Valida, ajusta e aprova — sem risco financeiro.</div>
     </div>
     <div class="difc r d2">
@@ -857,6 +856,16 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
       <div class="ditt">IA onde gera resultado</div>
       <div class="didd">Integramos inteligência artificial onde ela tem impacto real — previsão, automação e análise operacional.</div>
     </div>
+    <div class="difc r">
+      <div class="dico">📦</div>
+      <div class="ditt">Migração de dados incluída</div>
+      <div class="didd">Já tem um sistema? Seus dados migram para a nova solução. Nunca teve? Oferecemos suporte completo na adoção desde o primeiro dia.</div>
+    </div>
+    <div class="difc r d1">
+      <div class="dico">🔒</div>
+      <div class="ditt">Segurança e conformidade LGPD</div>
+      <div class="didd">Todas as soluções são desenvolvidas em conformidade com a LGPD. Seus dados e os dados dos seus clientes protegidos por padrão.</div>
+    </div>
 
   </div>
 </div>
@@ -869,25 +878,43 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
   <!-- Header -->
   <div class="tc r">
     <span class="tag"><span class="tdot"></span>Soluções em Ação</span>
-    <h2 class="stit">Problemas reais.<br>Soluções que você pode navegar.</h2>
-    <p class="ssub" style="margin:0 auto">Cada projeto abaixo nasceu de um gargalo específico. Explore os sistemas reais — navegue pelas telas, veja os módulos, sinta como seria ter uma solução desenvolvida para o seu negócio.</p>
+    <h2 class="stit">Problemas reais.<br>Soluções reais.</h2>
+    <p class="ssub" style="margin:0 auto">Cada projeto abaixo nasceu de um gargalo específico. Veja como transformamos desafios operacionais em soluções desenvolvidas sob medida.</p>
   </div>
 
   <!-- Dores grid — 6 tipos -->
   <div class="tc r" style="margin-bottom:2.5rem">
     <span class="tag"><span class="tdot"></span>Exemplos desenvolvidos</span>
-    <h2 class="stit" style="font-size:clamp(1.6rem,3vw,2.4rem)">Explore os projetos</h2>
-    <p class="ssub" style="margin:0 auto">Clique em qualquer projeto para navegar pelo sistema real. Dois deles estão disponíveis como demonstração interativa completa.</p>
+    <h2 class="stit" style="font-size:clamp(1.6rem,3vw,2.4rem)">Projetos em destaque</h2>
+    <p class="ssub" style="margin:0 auto">Demonstrações em vídeo de cada solução estarão disponíveis em breve. Cada projeto reflete um problema real transformado em resultado.</p>
   </div>
 
   <!-- Project cards -->
   <div class="r eco-grid" style="gap:1.4rem;margin-bottom:1.5rem">
 
-    <!-- ENGEMET -->
+    <!-- AGENTE AUTÔNOMO DE VENDAS -->
+    <div class="ecard">
+      <div class="eprev" style="background:linear-gradient(135deg,#031A12,#064E3B);cursor:default">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.35);display:flex;align-items:center;justify-content:center;font-size:1.3rem">💬</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
+        </div>
+        <div style="position:absolute;top:10px;right:10px;background:rgba(16,185,129,.9);color:#fff;font-size:.6rem;font-weight:700;padding:.25rem .65rem;border-radius:100px;letter-spacing:.04em">EM CONSTRUÇÃO</div>
+      </div>
+      <div class="ebody">
+        <div class="eclient">Inovação NexLow</div>
+        <div class="ename">Agente autônomo de vendas no WhatsApp</div>
+        <div class="eseg">🤖 IA · WhatsApp · Vendas 24h · Automação</div>
+        <div class="edesc">Um agente de IA que vende sozinho pelo WhatsApp: consulta o catálogo do cliente, calcula o frete automaticamente e fecha pedidos 24 horas por dia — sem intervenção humana. A próxima geração de automação comercial.</div>
+        <div style="margin-top:.85rem"><div class="eroi" style="background:rgba(16,185,129,.07);border-color:rgba(16,185,129,.2);color:#059669">Vendas automáticas, sem parar</div></div>
+      </div>
+    </div>
+
+    <!-- CONTROLE INDUSTRIAL -->
     <div class="ecard">
       <div class="eprev" style="background:linear-gradient(135deg,#07090F,#0D1828);cursor:default">
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
-          <div style="width:48px;height:48px;border-radius:50%;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">🏭</div>
           <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
         </div>
       </div>
@@ -900,11 +927,11 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
       </div>
     </div>
 
-    <!-- GUILHEM -->
+    <!-- GESTÃO OPERACIONAL -->
     <div class="ecard">
       <div class="eprev" style="background:linear-gradient(135deg,#0F0E0C,#1E1B17);cursor:default">
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
-          <div style="width:48px;height:48px;border-radius:50%;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
+          <div style="width:48px;height:48px;border-radius:50%;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">🪑</div>
           <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
         </div>
       </div>
@@ -917,75 +944,9 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
       </div>
     </div>
 
-    <!-- NEXFOOD -->
-    <div class="ecard">
-      <div class="eprev" style="background:linear-gradient(135deg,#05080F,#0A1020);cursor:default">
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
-          <div style="width:48px;height:48px;border-radius:50%;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
-          <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
-        </div>
-      </div>
-      <div class="ebody">
-        <div class="eclient">Problema resolvido</div>
-        <div class="ename">Redução de desperdício e custos com inteligência artificial</div>
-        <div class="eseg">Plataforma web com IA integrada para gestão e previsão</div>
-        <div class="edesc">Desperdício operacional invisível comprometendo a margem. Desenvolvemos uma plataforma com IA para previsão de demanda, recomendações automáticas de ajuste e simulação de economia em tempo real.</div>
-        <div style="margin-top:.85rem"><div class="eroi">ROI estimado 6–10 meses</div></div>
-      </div>
-    </div>
-
-    <!-- BEAUTYFLOW -->
-    <div class="ecard mobile-hidden"d">
-      <div class="eprev" style="background:linear-gradient(135deg,#07070d,#16161f);cursor:default">
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
-          <div style="width:48px;height:48px;border-radius:50%;background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
-          <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
-        </div>
-      </div>
-      <div class="ebody">
-        <div class="eclient">Problema resolvido</div>
-        <div class="ename">Retenção de clientes e aumento de recorrência</div>
-        <div class="eseg">Plataforma web de CRM, agenda e automação de relacionamento</div>
-        <div class="edesc">Alta rotatividade de clientes e falta de previsibilidade no faturamento. Desenvolvemos uma plataforma com agenda inteligente, CRM integrado e automação de campanhas de reativação e fidelização.</div>
-        <div style="margin-top:.85rem"><div class="eroi">ROI estimado 5–8 meses</div></div>
-      </div>
-    </div>
-
-    <!-- REALEZA -->
-    <div class="ecard mobile-hidden"d">
-      <div class="eprev" style="background:linear-gradient(135deg,#1a0d12,#2d1520);cursor:default">
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.75rem">
-          <div style="width:48px;height:48px;border-radius:50%;background:rgba(204,49,86,0.15);border:1px solid rgba(204,49,86,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem">▶</div>
-          <div style="font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.04em">Vídeo em breve</div>
-        </div>
-      </div>
-      <div class="ebody">
-        <div class="eclient">Problema resolvido</div>
-        <div class="ename">Centralização e controle de múltiplas unidades</div>
-        <div class="eseg">Dashboard executivo com PDV, estoque e financeiro unificados</div>
-        <div class="edesc">Múltiplas unidades operando sem visibilidade centralizada, com gestão fragmentada de caixa, estoque e vendas. Desenvolvemos um painel executivo unificado com indicadores em tempo real por unidade.</div>
-        <div style="margin-top:.85rem"><div class="eroi">ROI estimado 8–12 meses</div></div>
-      </div>
-    </div>
-
-    <!-- +3 projetos -->
-    <div class="ecard mobile-hidden"d" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:#fff;border:1.5px dashed rgba(21,87,212,.26);cursor:default">
-      <div style="font-size:1.8rem;color:var(--blue);margin-bottom:.7rem;font-weight:900">+3</div>
-      <div class="ename" style="margin-bottom:.4rem">Projetos em avaliação</div>
-      <div class="edesc" style="margin-bottom:1.2rem">Soluções em desenvolvimento para novos clientes. A solução segue o diagnóstico — não o inverso.</div>
-      <a href="#diagnostico" class="btn btnb" style="font-size:.78rem;padding:.62rem 1.3rem;text-decoration:none">Quero o meu →</a>
-    </div>
-
   </div>
 
-    <!-- Ver mais projetos — só mobile -->
-  <div class="mobile-show-more" style="display:none;text-align:center;margin-bottom:1rem">
-    <button onclick="showAllProjects(this)" style="background:none;border:1.5px solid rgba(21,87,212,.3);border-radius:100px;padding:.55rem 1.4rem;font-size:.82rem;font-weight:600;color:var(--blue);cursor:pointer;font-family:var(--ff)">
-      Ver todos os projetos ↓
-    </button>
-  </div>
-
-  <!-- Bottom CTA strip -->
+    <!-- Bottom CTA strip -->
   <div class="r" style="text-align:center;padding:1.5rem;background:var(--surf2);border-radius:var(--rl);border:1px solid rgba(21,87,212,.12)">
     <p style="font-size:.88rem;color:var(--ink2);margin-bottom:.6rem">Seu setor não está listado? <strong>O problema é o ponto de partida, não o segmento.</strong></p>
     <a href="#diagnostico" class="btn btnb" style="font-size:.85rem;padding:.75rem 1.7rem;text-decoration:none">Diagnosticar meu gargalo →</a>
@@ -1005,7 +966,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
     <p class="ssub" style="margin:0 auto">Do diagnóstico ao resultado — simples, rápido e sem surpresas.</p>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3.5rem" class="r met-4">
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;margin-top:3.5rem" class="r met-steps">
 
     <div style="background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(21,87,212,.13)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
       <div style="font-family:var(--ff);font-size:2.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem">01</div>
@@ -1016,7 +977,7 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
     <div style="background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(21,87,212,.13)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
       <div style="font-family:var(--ff);font-size:2.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem">02</div>
       <div style="font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Protótipo</div>
-      <div style="font-size:.85rem;color:var(--muted);line-height:1.7">Você visualiza a solução navegável em até 72 horas — antes de qualquer investimento.</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.7">Você visualiza a solução navegável em até 72 horas úteis — antes de qualquer investimento.</div>
     </div>
 
     <div style="background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(21,87,212,.13)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
@@ -1027,6 +988,12 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
 
     <div style="background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(21,87,212,.13)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
       <div style="font-family:var(--ff);font-size:2.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem">04</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Implantação</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.7">Migração dos seus dados, treinamento da equipe e acompanhamento no período de transição. Se você já tem um sistema, seus dados vêm junto — não começa do zero.</div>
+    </div>
+
+    <div style="background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 32px rgba(21,87,212,.13)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+      <div style="font-family:var(--ff);font-size:2.2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1rem">05</div>
       <div style="font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Evolução</div>
       <div style="font-size:.85rem;color:var(--muted);line-height:1.7">A solução cresce junto com sua empresa. Novas funcionalidades e módulos incorporados conforme o negócio evolui.</div>
     </div>
@@ -1064,7 +1031,8 @@ footer{background:#060C18;padding:2.6rem clamp(1.5rem,5vw,3rem);border-top:1px s
         <div class="fg"><label class="flbl">Prazo para implementação</label><select id="f-prazo" class="fsel"><option value="">Selecione</option><option>Imediato (até 30 dias)</option><option>Curto prazo (1 a 3 meses)</option><option>Médio prazo (3 a 6 meses)</option><option>Longo prazo (+ de 6 meses)</option></select></div>
         <div class="fg fl"><label class="flbl">Principal desafio ou gargalo atual</label><textarea id="f-desafio" class="fta" placeholder="Descreva o principal problema que você enfrenta hoje na operação..."></textarea></div>
         <div class="fg fl"><label class="flbl">O que deseja automatizar ou melhorar?</label><textarea id="f-automacao" class="fta" placeholder="Ex: controle de produção, gestão de estoque, relatórios gerenciais, processos manuais..."></textarea></div>
-        <div style="grid-column:1/-1"><button id="f-submit" type="button" class="fsub" onclick="submitForm()">Agendar Diagnóstico Estratégico Gratuito →</button></div>
+        <div style="grid-column:1/-1"><button id="f-submit" type="button" class="fsub" onclick="submitForm()">Agendar Diagnóstico Estratégico Gratuito →</button>
+        <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1rem;flex-wrap:wrap"><span style="font-size:.72rem;color:var(--muted2)">🔒 Dados protegidos</span><span style="color:var(--line)">·</span><span style="font-size:.72rem;color:var(--muted2)">Conformidade com a LGPD</span><span style="color:var(--line)">·</span><span style="font-size:.72rem;color:var(--muted2)">Sem spam</span></div></div>
       </form>
       <div id="fok" style="text-align:center;padding:2.5rem 1rem">
   <div style="font-size:3rem;margin-bottom:1.2rem">✅</div>
@@ -1259,13 +1227,6 @@ window.submitForm = submitForm;
 
 }); // end DOMContentLoaded
 
-window.showAllProjects = function(btn) {
-  document.querySelectorAll('.mobile-hidden').forEach(el => {
-    el.style.display = 'block';
-    el.classList.remove('mobile-hidden');
-  });
-  btn.parentElement.style.display = 'none';
-};
 
 // ── Hamburger menu
 window.toggleMenu = function() {
